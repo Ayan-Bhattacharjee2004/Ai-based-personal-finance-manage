@@ -1,0 +1,25 @@
+.Chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    
+  }
+  .label{
+    display: flex;
+    /* width: 50%; */
+    justify-content: right;
+    margin-right: 170px;
+    gap: 10px;
+  }
+  
+ 
+  .footer {
+    margin-top: 100px;
+    font-family: 'Pacifico', cursive;
+    font-size: 12px; 
+    text-align: center; 
+    color: #333; 
+  }
+  
+  

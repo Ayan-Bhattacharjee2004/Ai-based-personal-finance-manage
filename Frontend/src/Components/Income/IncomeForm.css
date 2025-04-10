@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+.transaction-form-container {
+  width: 50vw; /*  change form width here */
+  max-width: 1000px;
+  margin: 40px auto;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.transaction-form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 20px; /*  spacing between Amount and Account */
+  width: 100%;
+}
+
+.row .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 15px;
+  text-align: left;
+}
+
+
+input,
+select {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9fafb;
+  color: #1f2937;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+
+form input:not(.MuiInputBase-input):focus,
+form select:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  gap: 12px;
+}
+
+.create-btn {
+  background-color: #6c63ff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  flex: 1;
+}
+
+.create-btn:hover {
+  background-color: #574df5;
+}
+
+.cancel-btn {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  flex: 1;
+}
+
+.cancel-btn:hover {
+  background-color: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .transaction-form-container {
+    width: 90vw;
+    padding: 30px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+.mui-datepicker-container {
+  margin: 0 rem 0.2;
+}
+
+.mui-datepicker-container .MuiFormControl-root {
+  width: 100%;
+}
+
+.mui-datepicker-container .MuiInputBase-root {
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  height: 83%;
+  
+}
+
+.mui-datepicker-container .MuiOutlinedInput-notchedOutline {
+  border-color: #ccc;
+}
+
+.mui-datepicker-container .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #3f51b5;
+}
+
+.mui-datepicker-container .MuiInputLabel-root {
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #555;
+}
+
+/* .mui-datepicker-container .MuiInputBase-root :hover{
+  
+} */
+
+.L1 {
+  display: block;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
