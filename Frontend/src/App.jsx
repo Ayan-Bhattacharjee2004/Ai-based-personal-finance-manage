@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import Dashboard from './Pages/Dashboard'
 import IncomeForm from './Components/Income/IncomeForm'
 import './App.css'
 import Income from './Pages/Income'
@@ -11,6 +11,7 @@ function App() {
     <>
       {/* <IncomeForm/> */}
       <Income/>
+      <Dashboard/>
     </>
   )
 }
