@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const ConnectDB = require("./Config/db");
 const incomeRoutes = require("./routes/IncomeRoutes");
+const expenseRoutes = require("./routes/ExpenceRoutes"); // <== NEW for expenses
 const accountRoutes = require("./routes/AccountRoutes");
 
 const app = express();
@@ -16,7 +17,8 @@ ConnectDB();
 
 // Routes
 app.use("/api/incomes", incomeRoutes);
-app.use("/api/accounts", accountRoutes); // <== NEW for accounts
+app.use("/api/expenses", expenseRoutes); // <== NEW for expenses
+app.use("/api/accounts", accountRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

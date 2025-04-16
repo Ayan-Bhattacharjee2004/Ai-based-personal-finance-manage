@@ -103,43 +103,49 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
       minimumFractionDigits: 2
     }).format(amount);
   };
-
-  if (showCreateAccount) {
-    return (
-      <div className="transaction-form-container">
+  
+  // Create Account Modal/Popup
+  const createAccountModal = showCreateAccount && (
+    <div className="account-modal-overlay">
+      <div className="account-modal">
         <h2>Create New Account</h2>
-        <label className="L1">Account Name</label>
-        <input
-          type="text"
-          value={newAccountName}
-          onChange={(e) => setNewAccountName(e.target.value)}
-          placeholder="Account Name"
-        />
-        <label className="L1">Current Balance</label>
-        <input
-          type="number"
-          value={newAccountBalance}
-          onChange={(e) => setNewAccountBalance(e.target.value)}
-          placeholder="0.00"
-        />
-        <div className="form-buttons">
-          <button
-            className="create-btn"
-            onClick={handleAddNewAccount}
-            disabled={!newAccountName.trim() || !newAccountBalance}
-          >
-            Save Account
-          </button>
-          <button className="cancel-btn" onClick={() => setShowCreateAccount(false)}>
-            Cancel
-          </button>
+        <div className="modal-form">
+          <label className="L1">Account Name</label>
+          <input
+            type="text"
+            value={newAccountName}
+            onChange={(e) => setNewAccountName(e.target.value)}
+            placeholder="Account Name"
+          />
+          <label className="L1">Current Balance</label>
+          <input
+            type="number"
+            value={newAccountBalance}
+            onChange={(e) => setNewAccountBalance(e.target.value)}
+            placeholder="0.00"
+          />
+          <div className="form-buttons">
+            <button
+              className="create-btn"
+              onClick={handleAddNewAccount}
+              disabled={!newAccountName.trim() || !newAccountBalance}
+            >
+              Save Account
+            </button>
+            <button className="cancel-btn" onClick={() => setShowCreateAccount(false)}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 
   return (
     <div className="transaction-form-container">
+      {/* Render the modal/popup */}
+      {createAccountModal}
+
       <h1>{editingData ? "Edit Transaction" : "Add Income"}</h1>
       <form onSubmit={handleSubmit}>
         <div className="row">

@@ -3,6 +3,8 @@ import Dashboard from './Pages/Dashboard'
 import IncomeForm from './Components/Income/IncomeForm'
 import './App.css'
 import Income from './Pages/Income'
+import ExpenseForm from './Components/Expense/ExpenseForm'
+import Expense from './Pages/Expense'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,8 +12,10 @@ function App() {
   return (
     <>
       {/* <IncomeForm/> */}
+      {/* <Dashboard/> */}
       <Income/>
-      <Dashboard/>
+      {/* <ExpenseForm/> */}
+      <Expense/>
     </>
   )
 }
