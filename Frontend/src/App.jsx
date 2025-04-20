@@ -1,19 +1,28 @@
-import { useState } from 'react'
-import Dashboard from './Pages/Dashboard'
-import IncomeForm from './Components/Income/IncomeForm'
+
 import './App.css'
-import Income from './Pages/Income'
-
+import ProtectedRoute from './Components/ProtectedRoute';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./Components/HomePage";
+import Dashboard from "./Pages/Dashboard"
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp"
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      {/* <IncomeForm/> */}
-      <Income/>
-      <Dashboard/>
-    </>
-  )
+    <Router>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+      {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+      <Route path="/dashboard" element={
+  <ProtectedRoute>
+    <Dashboard />
+  </ProtectedRoute>
+} />
+    </Routes>
+  </Router>
+  );
 }
 
-export default App
+export default App;
+
