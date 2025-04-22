@@ -1,0 +1,187 @@
+/* HERO SECTION */
+.heroSection {
+    height: 80vh;
+    width: 100%;
+    background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+  }
+  
+  .heroOverlay {
+    text-align: center;
+    color: #1a237e;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .heroOverlay h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .heroOverlay p {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #424242;
+  }
+  
+  /* WHY WE EXIST */
+  .whyWeExist {
+    padding: 4rem 2rem;
+    background-color: #fafafa;
+    color: #424242;
+    text-align: center;
+  }
+  
+  .whyWeExist h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1a237e;
+    font-weight: 600;
+  }
+  
+  .whyWeExist p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  /* HOW IT WORKS */
+  .howItWorks {
+    padding: 4rem 2rem;
+    background-color: #e3f2fd;
+    text-align: center;
+    color: #1a237e;
+  }
+  
+  .howItWorks h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+  
+  .stepsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .step {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .step:hover {
+    transform: translateY(-4px);
+  }
+  
+  .step h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: #0d47a1;
+  }
+  
+  .step p {
+    font-size: 1rem;
+    color: #616161;
+  }
+  
+  /* Responsive for larger screens */
+  @media (min-width: 768px) {
+    .stepsContainer {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .step {
+      flex: 1;
+    }
+  }
+  
+  /* MEET OUR TEAM SECTION */
+  .meetOurTeam {
+    padding: 4rem 2rem;
+    background-color: #f5f5f5;
+    text-align: center;
+    color: #424242;
+  }
+  
+  .meetOurTeam h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #1a237e;
+    font-weight: 600;
+  }
+  
+  .teamContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .teamMember {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .teamMember:hover {
+    transform: translateY(-4px);
+  }
+  
+  .teamImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .teamMember h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #0d47a1;
+  }
+  
+  .teamMember p {
+    font-size: 0.95rem;
+    color: #616161;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Responsive for larger screens */
+  @media (min-width: 768px) {
+    .teamContainer {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .teamMember {
+      flex: 1;
+    }
+  }
+  
+  /* SECTION DIVIDER */
+  .sectionDivider {
+    width: 80%;
+    margin: 2rem auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  

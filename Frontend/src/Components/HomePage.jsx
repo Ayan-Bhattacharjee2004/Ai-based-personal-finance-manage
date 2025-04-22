@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import phone1 from "../assets/Phone1.jpg"; // Add your phone images
 import phone2 from "../assets/Phone2.jpg";
+import About from "../Pages/About";
 
 
 const HomePage = () => {
@@ -79,6 +80,8 @@ const HomePage = () => {
         </div>
 
       </section>
+
+      <About/>
 
     </div>
   );
