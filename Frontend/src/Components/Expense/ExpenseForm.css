@@ -175,3 +175,20 @@ form select:focus {
   color: #1f2937;
   margin-bottom: 4px;
 }
+.ai{
+  background: linear-gradient(to right, #f43f5e, #8b5cf6);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+.ai:hover {
+  opacity: 0.95;
+  border: 1px solid red;
+}

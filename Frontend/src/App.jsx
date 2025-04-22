@@ -6,8 +6,6 @@ import HomePage from "./Components/HomePage";
 import Dashboard from "./Pages/Dashboard";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-
-// Optional: If you also need these pages/components, uncomment as needed
 import Income from './Pages/Income';
 import ExpenseForm from './Components/Expense/ExpenseForm';
 import Expense from './Pages/Expense';

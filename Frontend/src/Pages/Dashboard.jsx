@@ -6,7 +6,7 @@ import { FiSearch, FiBell, FiSettings, FiUser } from "react-icons/fi";
 import { FaChartBar, FaWallet, FaExchangeAlt, FaBullseye, FaUserFriends, FaClipboardList, FaLink } from "react-icons/fa";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
-
+import RealEstateAgentIcon from '@mui/icons-material/RealEstateAgent';
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
 
@@ -61,14 +61,12 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
     <div className="flex h-screen w-screen bg-gray-50">
       {/* Sidebar */}
       <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6 space-y-6">
-        <div className="text-white text-2xl">🏦</div>
+        <div className="text-white text-2xl"><RealEstateAgentIcon/></div>
         <FaChartBar className="text-white text-2xl" />
         <FaWallet className="text-white text-2xl" />
-        <FaExchangeAlt className="text-white text-2xl" />
-        <FaBullseye className="text-white text-2xl" />
+        
         <FaUserFriends className="text-white text-2xl" />
-        <FaClipboardList className="text-white text-2xl" />
-        <FaLink className="text-white text-2xl" />
+      
         <FiSettings className="text-white text-2xl mt-auto" />
       </div>
 
@@ -101,12 +99,12 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
         </div>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-4 gap-6 px-6">
+        {/* <div className="grid grid-cols-4 gap-6 px-6">
           <DashboardCard title="Total Balance" amount="$432,568" percentage="3.12%" subtitle="Last month $28,940" up={true} />
           <DashboardCard title="Total Period Change" amount="$245,860" percentage="1.98%" subtitle="Last month $21,230" up={true} />
           <DashboardCard title="Total Period Expenses" amount="$2,530" percentage="4.78%" subtitle="Last month $26,340" up={false} />
           <DashboardCard title="Total Period Income" amount="$24,560" percentage="2.84%" subtitle="Last month $23,890" up={true} />
-        </div>
+        </div> */}
 
         {/* Graphs Section */}
         <div className="grid grid-cols-2 gap-6 p-6">
