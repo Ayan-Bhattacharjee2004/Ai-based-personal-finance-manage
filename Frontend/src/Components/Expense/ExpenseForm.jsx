@@ -6,6 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
+import CameraEnhanceIcon from '@mui/icons-material/CameraEnhance';
 
 const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
   const [accounts, setAccounts] = useState([]);
@@ -145,8 +146,11 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
 
       {/* Main Expense Form */}
       <h1>{editingData ? "Edit Expense" : "Add Expense"}</h1>
+      <button className="ai"> <CameraEnhanceIcon/>  Scan Receipt with AI</button>
+
       <form onSubmit={handleSubmit}>
         <div className="row">
+          
           <div className="form-group">
             <label>Amount</label>
             <input
