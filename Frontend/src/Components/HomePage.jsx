@@ -6,6 +6,8 @@ import { FaPlay } from "react-icons/fa";
 import phone1 from "../assets/Phone1.jpg"; // Add your phone images
 import phone2 from "../assets/Phone2.jpg";
 import About from "../Pages/About";
+import logo from "../assets/BudgetBee.png";
+
 
 
 const HomePage = () => {
@@ -15,19 +17,23 @@ const HomePage = () => {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-6">
         <div className="flex items-center gap-2">
-          <div className="bg-gradient-to-r from-green-400 to-blue-500 p-2 rounded-full">
+          {/* <div className="bg-gradient-to-r from-green-400 to-blue-500 p-2 rounded-full">
             <span className="font-bold text-xl">F</span>
+          </div> */}
+          {/* <span className="text-2xl font-semibold">Fintt.te</span> */}
+          <div className="img">
+          <img src={logo} alt="BudgetBee logo" className="w-44 h-auto" />
+
           </div>
-          <span className="text-2xl font-semibold">Fintt.te</span>
         </div>
 
-        <ul className="hidden md:flex gap-8 text-gray-300">
+        {/* <ul className="hidden md:flex gap-8 text-gray-300">
           <li className="hover:text-white cursor-pointer border-b-2 border-green-400">Home</li>
           <li className="hover:text-white cursor-pointer">Services</li>
           <li className="hover:text-white cursor-pointer">Features</li>
           <li className="hover:text-white cursor-pointer">Payments</li>
           <li className="hover:text-white cursor-pointer">About us</li>
-        </ul>
+        </ul> */}
 
         <div className="flex gap-4">
         <Link to="/login" className="text-gray-300 hover:text-white">
