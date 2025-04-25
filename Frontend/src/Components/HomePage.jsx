@@ -3,8 +3,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import phone1 from "../assets/Phone1.jpg"; // Add your phone images
-import phone2 from "../assets/Phone2.jpg";
+import phone1 from "../assets/whoWeAre.jpg"; // Add your phone images
+import phone2 from "../assets/Phoneai.jpg";
 import About from "../Pages/About";
 import logo from "../assets/BudgetBee.png";
 
@@ -58,12 +58,14 @@ const HomePage = () => {
             possible <span className="text-green-400">way.</span>
           </h1>
           <p className="text-gray-400 mb-8">
-            Fintt.te is the app that manages your finance with its ever smart features.
+            BudgetBee is the app that manages your finance with its ever smart features.
           </p>
           <div className="flex items-center gap-6">
+          <Link to="/login" className="text-gray-300 hover:text-white">
             <button className="bg-gradient-to-r from-blue-500 to-green-400 px-6 py-3 rounded-full font-semibold hover:opacity-90">
               Get Started
             </button>
+            </Link>
             <button className="flex items-center gap-2 text-white">
               <div className="p-3 border-2 border-white rounded-full">
                 <FaPlay size={14} />
@@ -77,12 +79,6 @@ const HomePage = () => {
         <div className="relative">
           <img src={phone1} alt="phone1" className="w-60 md:w-80 rotate-[20deg] absolute top-0 left-10" />
           <img src={phone2} alt="phone2" className="w-60 md:w-80 rotate-[-20deg] relative z-10" />
-          {/* 20M Users Trust Us Badge */}
-          <div className="absolute -top-8 -right-10 bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 rounded-full shadow-lg">
-            <p className="text-sm text-white font-bold">
-              20M <span className="font-normal">Users trust us</span>
-            </p>
-          </div>
         </div>
 
       </section>

@@ -24,7 +24,7 @@ function About() {
           simpler, and more personal.
         </p>
         <p>
-          That’s why we created <strong>PowerUpMoney</strong> — your AI-powered finance companion.
+          That’s why we created <strong>BudgetBee</strong> — your AI-powered finance companion.
           We exist to make financial decision-making easy, stress-free, and intelligent, for everyone.
         </p>
       </section>
