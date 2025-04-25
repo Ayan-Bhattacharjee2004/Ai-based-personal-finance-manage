@@ -4,7 +4,7 @@ import Footer from '../Components/AboutPage/Footer';
 
 function About() {
   return (
-    <div>
+    <div className="aboutPageWrapper">
       {/* HERO SECTION */}
       <div className="heroSection">
         <div className="heroOverlay">
