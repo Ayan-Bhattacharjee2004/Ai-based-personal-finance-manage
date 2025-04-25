@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* This prevents the screen width overflowing */
+body {
+    overflow-x: hidden;
+  }
+  

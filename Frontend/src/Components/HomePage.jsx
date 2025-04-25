@@ -3,10 +3,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import phone1 from "../assets/whoWeAre.jpg"; // Add your phone images
+import phone1 from "../assets/whoWeAre.jpg";
 import phone2 from "../assets/Phoneai.jpg";
-import About from "../Pages/About";
 import logo from "../assets/BudgetBee.png";
+import WhyUs from '../Components/HomePage/WhyUs';
+import Footer from '../Components/AboutPage/Footer'; //footer section
+
 
 
 
@@ -82,9 +84,10 @@ const HomePage = () => {
         </div>
 
       </section>
-
-      <About/>
-
+      {/* why us section */}
+          <WhyUs/>
+          {/* footer section */}
+          <Footer/>
     </div>
   );
 };
