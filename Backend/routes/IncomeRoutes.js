@@ -1,15 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const {
-  createIncome,
-  getAllIncomes,
-  deleteIncome,
-  updateIncome,
-} = require("../controllers/IncomeController");
+const { createIncome, getAllIncomes, deleteIncome, updateIncome } = require("../controllers/IncomeController");
+const authMiddleware = require("../middleware/authMiddleware"); // ✅ Protecting routes
 
-router.post("/", createIncome);
-router.get("/", getAllIncomes);
-router.delete("/:id", deleteIncome);
-router.put("/:id", updateIncome);
+// 🛡️ Only logged-in users can access incomes
+router.post("/", authMiddleware, createIncome);
+router.get("/", authMiddleware, getAllIncomes);
+router.delete("/:id", authMiddleware, deleteIncome);
+router.put("/:id", authMiddleware, updateIncome);
 
 module.exports = router;

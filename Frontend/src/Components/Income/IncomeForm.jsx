@@ -21,8 +21,10 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const res = await axios.get("http://localhost:7500/api/accounts");
-        // Store full account objects, not just names
+        const token = localStorage.getItem('token');
+        const res = await axios.get("http://localhost:7500/api/accounts", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         setAccounts([...res.data, { name: "Create ac" }]);
       } catch (err) {
         console.error("Failed to fetch accounts:", err);
@@ -46,12 +48,14 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
     if (!trimmedName || isNaN(balance)) return;
 
     try {
+      const token = localStorage.getItem('token');
       const response = await axios.post("http://localhost:7500/api/accounts", {
         name: trimmedName,
         balance,
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
       });
-      
-      // Add the new account to the accounts list
+
       const newAccount = response.data;
       setAccounts([...accounts.filter(acc => acc.name !== "Create ac"), newAccount, { name: "Create ac" }]);
       setAccount(trimmedName);
@@ -79,7 +83,7 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
     }
   }, [editingData]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       id: editingData?._id || editingData?.id,
@@ -92,7 +96,6 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
       initialBalance: newAccountBalance || 0,
     };
 
-    // Just pass the data to parent component which will handle the API call
     onSubmit(data);
   };
 
@@ -103,8 +106,7 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
       minimumFractionDigits: 2
     }).format(amount);
   };
-  
-  // Create Account Modal/Popup
+
   const createAccountModal = showCreateAccount && (
     <div className="account-modal-overlay">
       <div className="account-modal">
@@ -143,7 +145,6 @@ const IncomeForm = ({ onSubmit, editingData, onCancel }) => {
 
   return (
     <div className="transaction-form-container">
-      {/* Render the modal/popup */}
       {createAccountModal}
 
       <h1>{editingData ? "Edit Transaction" : "Add Income"}</h1>

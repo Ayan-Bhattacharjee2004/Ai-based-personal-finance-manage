@@ -10,14 +10,18 @@ const Expense = () => {
 
   const backendURL = 'http://localhost:7500/api/expenses';
 
-  // Load all expense entries from backend when component mounts
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get(backendURL);
+        const token = localStorage.getItem('token');
+        const response = await axios.get(backendURL, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const expenseData = response.data.map((item) => ({
           ...item,
-          id: item._id, // MUI DataGrid needs `id`, not `_id`
+          id: item._id,
         }));
         setExpenses(expenseData);
       } catch (error) {
@@ -28,20 +32,26 @@ const Expense = () => {
     fetchExpenses();
   }, []);
 
-  // Add or Update Expense
   const handleAddOrUpdate = async (data) => {
     try {
+      const token = localStorage.getItem('token');
       if (data.id) {
-        // Update
-        const res = await axios.put(`${backendURL}/${data.id}`, data);
+        const res = await axios.put(`${backendURL}/${data.id}`, data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const updated = res.data;
         setExpenses((prev) =>
           prev.map((item) => (item.id === updated._id ? { ...updated, id: updated._id } : item))
         );
       } else {
-        // Create
-        const res = await axios.post(backendURL, data);
-        const created = res.data.expense; // ✅ Fix: extract expense from response
+        const res = await axios.post(backendURL, data, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const created = res.data.expense;
         setExpenses((prev) => [...prev, { ...created, id: created._id }]);
       }
       setShowForm(false);
@@ -51,29 +61,30 @@ const Expense = () => {
     }
   };
 
-  // Start editing
   const handleEdit = (expense) => {
     setEditingExpense(expense);
     setShowForm(true);
   };
 
-  // Delete expense from backend and state
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${backendURL}/${id}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`${backendURL}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setExpenses((prev) => prev.filter((item) => item.id !== id));
     } catch (err) {
       console.error("Error deleting expense:", err);
     }
   };
 
-  // Show add form
   const handleAddClick = () => {
     setEditingExpense(null);
     setShowForm(true);
   };
 
-  // Cancel form
   const handleCancel = () => {
     setShowForm(false);
     setEditingExpense(null);

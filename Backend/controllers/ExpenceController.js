@@ -19,7 +19,15 @@ const createExpense = async (req, res) => {
       await accountDoc.save();
     }
 
-    const newExpense = new Expense({ amount, account, category, date, description });
+    const newExpense = new Expense({
+      amount,
+      account,
+      category,
+      date,
+      description,
+      userId: req.user, // ✅ Add logged in user id
+    });
+
     await newExpense.save();
 
     res.status(201).json({ message: "Expense added and account balance updated", expense: newExpense });
@@ -30,7 +38,7 @@ const createExpense = async (req, res) => {
 
 const getAllExpenses = async (req, res) => {
   try {
-    const expenses = await Expense.find();
+    const expenses = await Expense.find({ userId: req.user }); // ✅ Fetch only logged-in user's expenses
     res.status(200).json(expenses);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -55,9 +63,4 @@ const updateExpense = async (req, res) => {
   }
 };
 
-module.exports = {
-  createExpense,
-  getAllExpenses,
-  deleteExpense,
-  updateExpense,
-};
+module.exports = { createExpense, getAllExpenses, deleteExpense, updateExpense };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ExpenseForm.css"; // You can create a separate CSS file for expense form styles
+import "./ExpenseForm.css";
 import dayjs from "dayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -23,8 +23,10 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const res = await axios.get("http://localhost:7500/api/accounts");
-        // Store full account objects, not just names
+        const token = localStorage.getItem('token'); // Fetch token from localStorage
+        const res = await axios.get("http://localhost:7500/api/accounts", {
+          headers: { Authorization: `Bearer ${token}` } // Add token in header
+        });
         setAccounts([...res.data, { name: "Create ac" }]);
       } catch (err) {
         console.error("Failed to fetch accounts:", err);
@@ -48,9 +50,12 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
     if (!trimmedName || isNaN(balance)) return;
 
     try {
+      const token = localStorage.getItem('token'); // Fetch token from localStorage
       const response = await axios.post("http://localhost:7500/api/accounts", {
         name: trimmedName,
         balance,
+      }, {
+        headers: { Authorization: `Bearer ${token}` } // Add token in header
       });
       
       // Add the new account to the accounts list

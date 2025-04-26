@@ -19,7 +19,15 @@ const createIncome = async (req, res) => {
       await accountDoc.save();
     }
 
-    const newIncome = new Income({ amount, account, category, date, description });
+    const newIncome = new Income({
+      amount,
+      account,
+      category,
+      date,
+      description,
+      userId: req.user, // ✅ Add logged in user id
+    });
+
     await newIncome.save();
 
     res.status(201).json({ message: "Income added and account balance updated", income: newIncome });
@@ -30,7 +38,7 @@ const createIncome = async (req, res) => {
 
 const getAllIncomes = async (req, res) => {
   try {
-    const incomes = await Income.find();
+    const incomes = await Income.find({ userId: req.user }); // ✅ Fetch only logged-in user's income
     res.status(200).json(incomes);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -55,9 +63,4 @@ const updateIncome = async (req, res) => {
   }
 };
 
-module.exports = {
-  createIncome,
-  getAllIncomes,
-  deleteIncome,
-  updateIncome,
-};
+module.exports = { createIncome, getAllIncomes, deleteIncome, updateIncome };
