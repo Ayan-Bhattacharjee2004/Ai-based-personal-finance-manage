@@ -5,16 +5,7 @@ import Footer from '../Components/AboutPage/Footer';
 function About() {
   return (
     <div className="aboutPageWrapper">
-      {/* HERO SECTION */}
-      <div className="heroSection">
-        <div className="heroOverlay">
-          <h1>About Us</h1>
-          <p>Empowering Your Finances with AI Simplicity</p>
-        </div>
-      </div>
-
       <div className="sectionDivider"></div>
-
       {/* WHY WE EXIST SECTION */}
       <section className="whyWeExist">
         <h2>Why We Exist</h2>
@@ -82,8 +73,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

@@ -6,8 +6,8 @@ function Footer() {
     <footer className="footer">
       <div className="footerContent">
         <div className="footerLeft">
-          <h3>PowerUpMoney</h3>
-          <p>&copy; 2025 PowerUpMoney. All Rights Reserved.</p>
+          <h3>BudgetBee</h3>
+          <p>&copy; 2025 BudgetBee. All Rights Reserved.</p>
         </div>
         <div className="footerRight">
           <ul>

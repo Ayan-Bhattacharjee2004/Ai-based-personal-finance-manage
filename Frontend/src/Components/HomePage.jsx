@@ -7,6 +7,7 @@ import phone1 from "../assets/whoWeAre.jpg";
 import phone2 from "../assets/Phoneai.jpg";
 import logo from "../assets/BudgetBee.png";
 import WhyUs from '../Components/HomePage/WhyUs';
+import About from '../Pages/About';
 import Footer from '../Components/AboutPage/Footer'; //footer section
 
 
@@ -87,6 +88,8 @@ const HomePage = () => {
       {/* why us section */}
           <WhyUs/>
           {/* footer section */}
+        {/* about section */}
+        <About/>
           <Footer/>
     </div>
   );
