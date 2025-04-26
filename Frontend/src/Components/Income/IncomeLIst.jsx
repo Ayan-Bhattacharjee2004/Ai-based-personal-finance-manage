@@ -183,7 +183,7 @@ const IncomeList = ({ incomes, onEdit, onDelete, onAdd }) => {
       </div>
 
       <label className="label"><AccountBalanceIcon /> Income by Account</label>
-      <footer className="footer">Made by Team KARY — Turning ideas into reality. 😊</footer>
+      <footer className="footerfor">Made by Team KARY — Turning ideas into reality. 😊</footer>
     </div>
   );
 };

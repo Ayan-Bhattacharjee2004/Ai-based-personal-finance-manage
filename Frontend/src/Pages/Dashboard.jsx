@@ -62,8 +62,13 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
       {/* Sidebar */}
       <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6 space-y-6">
         <div className="text-white text-2xl"><RealEstateAgentIcon/></div>
-        <FaChartBar className="text-white text-2xl" />
-        <FaWallet className="text-white text-2xl" />
+        {/* <FaChartBar className="text-white text-2xl" /> */}
+        <FaChartBar
+            className="text-white text-2xl cursor-pointer"
+            onClick={() => navigate('/income')}
+          />
+        <FaWallet className="text-white text-2xl cursor-pointer"
+            onClick={() => navigate('/expense')}/>
         
         <FaUserFriends className="text-white text-2xl" />
       

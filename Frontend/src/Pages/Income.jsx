@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import IncomeForm from '../Components/Income/IncomeForm';
 import IncomeList from '../Components/Income/IncomeLIst';
 import axios from 'axios';
-
+import "./Income.css"
 const Income = () => {
   const [incomes, setIncomes] = useState([]);
   const [editingIncome, setEditingIncome] = useState(null);
@@ -80,7 +80,8 @@ const Income = () => {
   };
 
   return (
-    <div style={{ padding: '30px' }}>
+    <div className='IncomeC'>
+
       {showForm ? (
         <IncomeForm
           onSubmit={handleAddOrUpdate}

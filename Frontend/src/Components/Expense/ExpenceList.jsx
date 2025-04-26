@@ -181,7 +181,7 @@ const ExpenseList = ({ expenses, onEdit, onDelete, onAdd }) => {
       </div>
 
       <label className="label"><AccountBalanceWalletIcon /> Expense by Account</label>
-      <footer className="footer">Made by Team KARY — Turning ideas into reality. 😊</footer>
+      <footer className="footerfor">Made by Team KARY — Turning ideas into reality. 😊</footer>
     </div>
   );
 };

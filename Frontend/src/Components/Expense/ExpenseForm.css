@@ -175,7 +175,7 @@ form select:focus {
   color: #1f2937;
   margin-bottom: 4px;
 }
-.ai{
+.AIScanReceiptGemini{
   background: linear-gradient(to right, #f43f5e, #8b5cf6);
   color: #fff;
   border: none;
@@ -188,7 +188,7 @@ form select:focus {
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
-.ai:hover {
+.AIScanReceiptGemini:hover {
   opacity: 0.95;
   border: 1px solid red;
 }

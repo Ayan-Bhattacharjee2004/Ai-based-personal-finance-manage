@@ -7,6 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
 import CameraEnhanceIcon from '@mui/icons-material/CameraEnhance';
+import AIScanReceiptGemini from "../AIScanReceipt.jsx"; 
 
 const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
   const [accounts, setAccounts] = useState([]);
@@ -105,6 +106,13 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
     }).format(amount);
   };
 
+  // Handle scan complete
+  const handleScanComplete = (scannedData) => {
+    setAmount(scannedData.amount || "");
+    setDate(scannedData.date ? dayjs(scannedData.date) : null);
+    setDescription(scannedData.description || "");
+  };
+
   return (
     <div className="transaction-form-container">
       {/* Create Account Modal/Popup */}
@@ -146,11 +154,12 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
 
       {/* Main Expense Form */}
       <h1>{editingData ? "Edit Expense" : "Add Expense"}</h1>
-      <button className="ai"> <CameraEnhanceIcon/>  Scan Receipt with AI</button>
+
+      {/* AI Scan Button */}
+      <AIScanReceiptGemini onScanComplete={handleScanComplete} />
 
       <form onSubmit={handleSubmit}>
         <div className="row">
-          
           <div className="form-group">
             <label>Amount</label>
             <input

@@ -80,7 +80,7 @@ const Expense = () => {
   };
 
   return (
-    <div style={{ padding: '30px' }}>
+    <div className='IncomeC'>
       {showForm ? (
         <ExpenseForm
           onSubmit={handleAddOrUpdate}
