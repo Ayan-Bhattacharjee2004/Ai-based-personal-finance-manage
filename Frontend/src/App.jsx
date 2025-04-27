@@ -9,6 +9,7 @@ import SignUp from "./Pages/SignUp";
 import Income from './Pages/Income';
 import ExpenseForm from './Components/Expense/ExpenseForm';
 import Expense from './Pages/Expense';
+import ContactUs from './Pages/ContactUs';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         } />
         <Route path="/income" element={<Income />} />
         <Route path="/expense" element={<Expense />} />
+        <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </Router>
   );
