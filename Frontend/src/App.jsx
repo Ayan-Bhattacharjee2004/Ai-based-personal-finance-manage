@@ -10,6 +10,7 @@ import Income from './Pages/Income';
 import ExpenseForm from './Components/Expense/ExpenseForm';
 import Expense from './Pages/Expense';
 import Budget from './Pages/Budget';
+
 function App() {
   return (
     <Router>

@@ -127,36 +127,31 @@ const Budget = () => {
 
       {budgets.length > 0 ? (
         <ul>
-        {budgets.map((budget) => {
-          const totalSpent = expenses
-            .filter(expense => expense.account === budget.account._id)
-            .reduce((sum, expense) => sum + expense.amount, 0);
-      
-          const remaining = budget.amount - totalSpent;
-      
-          return (
-            <li key={budget._id} style={{ marginBottom: "10px" }}>
-              <strong>Account:</strong> {budget.account?.name || "Account Not Found"} |
-              <strong> Budget:</strong> ₹{budget.amount} |
-              <strong> Spent:</strong> ₹{totalSpent} |
-              <strong> Remaining:</strong> ₹{remaining}
-      
-              <button
-                onClick={() => handleEditBudget(budget)}
-                style={{ marginLeft: "10px" }}
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDeleteBudget(budget._id)}
-                style={{ marginLeft: "5px", color: "red" }}
-              >
-                Delete
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+          {budgets.map((budget) => {
+            // 🧠 Right now remaining = full amount (no expense subtraction yet)
+            const remaining = budget.amount;
+
+            return (
+              <li key={budget._id} style={{ marginBottom: "10px" }}>
+                <strong>Account:</strong> {budget.account?.name || "Account Not Found"} | 
+                <strong> Budget Amount:</strong> ₹{budget.amount} |
+                <strong> Remaining:</strong> ₹{remaining}
+                <button
+                  onClick={() => handleEditBudget(budget)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDeleteBudget(budget._id)}
+                  style={{ marginLeft: "5px", color: "red" }}
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       ) : (
         <p>No Budgets Found. Please create one!</p>
       )}
