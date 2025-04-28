@@ -4,3 +4,85 @@
     margin: 0.5rem auto;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
+
+  .faqSection {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.faqAccordion {
+    margin-bottom: 10px;
+}
+
+.faqQuestion {
+    font-weight: bold;
+    color: #333;
+}
+
+.faqAnswer {
+    color: #555;
+}
+
+.contactFormSection {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contactFormSection h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+.sectionDivider {
+  width: 80%;
+  margin: 0.5rem auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: block;
+}
