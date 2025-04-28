@@ -1,5 +1,5 @@
 import React from 'react';
-import phone2 from '../../Assets/Phoneai.jpg';  // Import the image
+import phone2 from '../../Assets/Screenshot (38).png';  // Import the image
 
 const WhyUs = () => {
   return (
@@ -42,7 +42,7 @@ const WhyUs = () => {
             <img 
               src={phone2} 
               alt="AI Powered Insights" 
-              className="w-full h-full object-cover rounded-lg" 
+              className="w-90  ml-40  rounded-lg" 
             />
           </div>
 

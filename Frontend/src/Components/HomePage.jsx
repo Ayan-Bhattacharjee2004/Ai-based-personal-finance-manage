@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
-import phone1 from "../assets/whoWeAre.jpg";
+import phone1 from "../assets/Screenshot (37).png";
 import phone2 from "../assets/Phoneai.jpg";
 import logo from "../assets/BudgetBee.png";
 import WhyUs from '../Components/HomePage/WhyUs';
@@ -81,8 +81,11 @@ const HomePage = () => {
 
         {/* Right Images */}
         <div className="relative">
-          <img src={phone1} alt="phone1" className="w-60 md:w-80 rotate-[20deg] absolute top-0 left-10" />
-          <img src={phone2} alt="phone2" className="w-60 md:w-80 rotate-[-20deg] relative z-10" />
+         
+          {/* <img src={phone1} alt="phone1" className="w-60 md:w-80 rotate-[-20deg] relative z-10" /> */}
+          <img src={phone1} alt="phone1" className="w-96 md:w-[500px] -ml-16 rotate-[-20deg] relative z-10" />
+
+
         </div>
 
       </section>
