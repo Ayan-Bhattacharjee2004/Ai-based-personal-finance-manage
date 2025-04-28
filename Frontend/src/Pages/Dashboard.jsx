@@ -70,7 +70,8 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
         <FaWallet className="text-white text-2xl cursor-pointer"
             onClick={() => navigate('/expense')}/>
         
-        <FaUserFriends className="text-white text-2xl" />
+        <FaUserFriends className="text-white text-2xl"
+        onClick={()=>navigate("/budget")} />
       
         <FiSettings className="text-white text-2xl mt-auto" />
       </div>

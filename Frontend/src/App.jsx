@@ -9,7 +9,7 @@ import SignUp from "./Pages/SignUp";
 import Income from './Pages/Income';
 import ExpenseForm from './Components/Expense/ExpenseForm';
 import Expense from './Pages/Expense';
-
+import Budget from './Pages/Budget';
 function App() {
   return (
     <Router>
@@ -24,6 +24,7 @@ function App() {
         } />
         <Route path="/income" element={<Income />} />
         <Route path="/expense" element={<Expense />} />
+        <Route path="/budget" element={<Budget />} />
       </Routes>
     </Router>
   );
