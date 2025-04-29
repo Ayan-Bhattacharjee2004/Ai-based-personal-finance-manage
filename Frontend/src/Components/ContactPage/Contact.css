@@ -5,26 +5,47 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  .faqSection {
-    padding: 20px;
+  .heroSection {
+    background-image: url("../../assets/robotai.jpg");
+    background-size: cover;       
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 50vh;                               
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+
+  .faqImageSection {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
     background-color: #f9f9f9;
+    gap: 2rem;
+  }
+  
+  .faqContent {
+    flex: 1.5;
+    min-width: 300px;
+  }
+  
+  .faqImage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .faqImage img {
+    max-width: 500px;
+    height: auto;
     border-radius: 10px;
-}
+  }
+  
 
-.faqAccordion {
-    margin-bottom: 10px;
-}
-
-.faqQuestion {
-    font-weight: bold;
-    color: #333;
-}
-
-.faqAnswer {
-    color: #555;
-}
-
-.contactFormSection {
+.contactFormSection{
   padding: 2rem;
   max-width: 600px;
   margin: 0 auto;
@@ -33,7 +54,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contactFormSection h2 {
+.contactFormSection{
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
@@ -85,4 +106,18 @@ button:hover {
   margin: 0.5rem auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: block;
+}
+/* Universal base styling for the Contact Us page */
+
+body {
+  background-color: #ffffff;  /* pure white background */
+  color: #222222;             /* default text color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 2rem;
+  background-color: #ffffff;  /* ensure sections stay white unless overridden */
 }
