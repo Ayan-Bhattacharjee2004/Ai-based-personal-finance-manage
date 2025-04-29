@@ -6,27 +6,22 @@ import { FaPlay } from "react-icons/fa";
 import phone1 from "../assets/Screenshot (37).png";
 import phone2 from "../assets/Phoneai.jpg";
 import logo from "../assets/BudgetBee.png";
-import WhyUs from '../Components/HomePage/WhyUs';
-import About from '../Pages/About';
-import Footer from '../Components/AboutPage/Footer'; //footer section
-
-
-
+import WhyUs from "../Components/HomePage/WhyUs";
+import About from "../Pages/About";
+import Footer from "../Components/AboutPage/Footer"; //footer section
 
 const HomePage = () => {
   return (
-    <div className="bg-black min-h-screen min-w-screen overflow-x-hidden  text-white font-sans">
-      
+    <div className="bg-[#030712] min-h-screen min-w-screen overflow-x-hidden  text-white font-sans">
       {/* Navbar */}
-      <nav className="flex items-center justify-between px-8 py-6">
+      <nav className="flex items-center justify-between px-22 py-2">
         <div className="flex items-center gap-2">
           {/* <div className="bg-gradient-to-r from-green-400 to-blue-500 p-2 rounded-full">
             <span className="font-bold text-xl">F</span>
           </div> */}
           {/* <span className="text-2xl font-semibold">Fintt.te</span> */}
-          <div className="img">
-          <img src={logo} alt="BudgetBee logo" className="w-44 h-auto" />
-
+          <div className="img w-34">
+            <img src={logo} alt="BudgetBee logo" />
           </div>
         </div>
 
@@ -39,40 +34,42 @@ const HomePage = () => {
         </ul> */}
 
         <div className="flex gap-4">
-        <Link to="/login" className="text-white hover:text-blue-500">
-  Login
-</Link>
+          <Link to="/login">
+          <button className="text-white px-6 py-3 rounded-full font-semibold hover:opacity-90">
+              Login
+            </button>
+          </Link>
 
           <Link to="/SignUp">
-    <button className="bg-gradient-to-r from-green-400 to-blue-500 px-5 py-2 rounded-full font-semibold hover:opacity-90">
-      Sign Up
-    </button>
-  </Link>
+            <button className="bg-gradient-to-r from-blue-500 to-green-400 text-white px-6 py-3 rounded-full font-semibold hover:opacity-90">
+              Sign Up
+            </button>
+          </Link>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between px-8 md:px-20 py-20">
-        
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between px-8 md:px-20 py-20 bg-gradient-to-r from-[#030712] to-[#4d556b]">
         {/* Left Text */}
-        <div className="max-w-xl">
+        <div className="max-w-xl pl-3">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            Manage your <br /> 
+            Manage your <br />
             <span className="text-white">money</span> in the best <br />
             possible <span className="text-green-400">way.</span>
           </h1>
-          <p className="text-gray-400 mb-8">
-            BudgetBee is the app that manages your finance with its ever smart features.
+          <p className="text-gray-400 mb-8 w-80">
+            BudgetBee is the app that manages your finance with its ever smart
+            features.
           </p>
           <div className="flex items-center gap-6">
-          <Link to="/login">
-            <button className="bg-gradient-to-r from-blue-500 to-green-400 px-6 py-3 rounded-full font-semibold hover:opacity-90">
-              Get Started
-            </button>
+            <Link to="/login">
+              <button className="bg-gradient-to-r from-blue-500 to-green-400 text-white px-6 py-3 rounded-full font-semibold hover:opacity-90">
+                Get Started
+              </button>
             </Link>
             <button className="flex items-center gap-2 text-white">
-              <div className="p-3 border-2 border-white rounded-full">
-                <FaPlay size={14} />
+              <div className="p-2 border-1 border-white rounded-full">
+                <FaPlay size={8} />
               </div>
               Watch Video
             </button>
@@ -81,20 +78,20 @@ const HomePage = () => {
 
         {/* Right Images */}
         <div className="relative">
-         
           {/* <img src={phone1} alt="phone1" className="w-60 md:w-80 rotate-[-20deg] relative z-10" /> */}
-          <img src={phone1} alt="phone1" className="w-96 md:w-[500px] -ml-16 rotate-[-20deg] relative z-10" />
-
-
+          <img
+            src={phone1}
+            alt="phone1"
+            className="w-96 md:w-[500px] -ml-16 rotate-[-20deg] relative z-10"
+          />
         </div>
-
       </section>
       {/* why us section */}
-          <WhyUs/>
-          {/* footer section */}
-        {/* about section */}
-        <About/>
-          <Footer/>
+      <WhyUs />
+      {/* footer section */}
+      {/* about section */}
+      <About />
+      <Footer />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const FAQ = () => {
   return (
     <section className="faqImageSection">
       <div className="faqContent">
-      <h2>Frequestly asked questions</h2>
+    
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>What is BudgetBee?</Typography>
@@ -92,7 +92,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
       </div>
-
+     
       <div className="faqImage">
         <img
           src={faq3}

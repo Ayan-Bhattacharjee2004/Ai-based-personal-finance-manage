@@ -13,7 +13,6 @@ function Footer() {
         <div className="footerRight">
           <ul>
             <li><Link to="/">Home</Link></li> {/* Use Link instead of <a> */}
-            <li><Link to="/about">About Us</Link></li> {/* Use Link instead of <a> */}
             <li><Link to="/contact">Contact Us</Link></li> {/* Use Link instead of <a> */}
             <li><Link to="/privacy-policy">Privacy Policy</Link></li> {/* Use Link instead of <a> */}
             <li><Link to="/terms-of-service">Terms of Service</Link></li> {/* Use Link instead of <a> */}

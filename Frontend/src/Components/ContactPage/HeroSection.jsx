@@ -6,8 +6,9 @@ function HeroSection() {
   return (
     <section className="heroSection">
       <div className="hero-content">
-        <h1>Contact Us</h1>
-        <p>Got questions? Reach out to make your experience seamless.</p>
+        <h1><b>Contact Us</b></h1>
+        <br />
+        <p><b>Questions, feedback, or ideas? We’re listening👂</b></p>
       </div>
     </section>
   );
