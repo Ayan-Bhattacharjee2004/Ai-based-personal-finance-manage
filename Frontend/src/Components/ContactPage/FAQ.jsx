@@ -12,7 +12,7 @@ import faq3 from "../../assets/faq3.jpg";
 
 const FAQ = () => {
   return (
-    <section className="faqImageSection">
+    <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
       <div className="faqContent">
     
         <Accordion>

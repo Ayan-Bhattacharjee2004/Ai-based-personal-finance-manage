@@ -1,9 +1,10 @@
 import React from 'react';
+import "./WhyUs.css"
 import phone2 from '../../Assets/Screenshot (38).png';  // Import the image
 
 const WhyUs = () => {
   return (
-    <div className="bg-black min-h-screen text-white font-sans pt-24">
+    <div className="min-h-screen text-white font-sans pt-24 bg-gradient-to-r from-[#030712] to-[#4d556b]" >
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">Why Choose BudgetBee?</h2>

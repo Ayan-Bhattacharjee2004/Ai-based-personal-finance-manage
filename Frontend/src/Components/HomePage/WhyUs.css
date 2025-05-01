@@ -2,7 +2,7 @@
 .why-us-container {
   background-color: black;
   min-height: 100vh;
-  padding-top: 6rem;
+  padding-top: 3rem;
   padding-bottom: 2rem; /* Adding some space at the bottom */
   display: flex;
   flex-direction: column;
