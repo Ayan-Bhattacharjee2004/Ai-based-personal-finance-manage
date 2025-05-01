@@ -1,3 +1,17 @@
-.IncomeC{
-    padding-left: 20vw;
-}
+.IncomeC {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: aqua;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+  
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+  }
+  

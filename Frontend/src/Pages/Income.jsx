@@ -93,20 +93,22 @@ const Income = () => {
 
   return (
     <div className='IncomeC'>
-      {showForm ? (
-        <IncomeForm
-          onSubmit={handleAddOrUpdate}
-          editingData={editingIncome}
-          onCancel={handleCancel}
-        />
-      ) : (
-        <IncomeList
-          incomes={incomes}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-          onAdd={handleAddClick}
-        />
-      )}
+      <div className="content-wrapper">
+        {showForm ? (
+          <IncomeForm
+            onSubmit={handleAddOrUpdate}
+            editingData={editingIncome}
+            onCancel={handleCancel}
+          />
+        ) : (
+          <IncomeList
+            incomes={incomes}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            onAdd={handleAddClick}
+          />
+        )}
+      </div>
     </div>
   );
 };
