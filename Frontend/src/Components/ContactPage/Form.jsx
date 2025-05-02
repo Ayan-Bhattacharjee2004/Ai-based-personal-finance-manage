@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import faq2 from "../../assets/FAQ2.JPG"
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -19,11 +20,12 @@ const ContactForm = () => {
     };
 
     return (
-        <section className="contactFormSection">
+        <section className="contactFormSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
             <div className="contactInfoLeft">
                 <h2>Get in Touch</h2>
                 <p>Have questions, suggestions, or feedback? We’d love to hear from you. Fill out the form and we’ll get back to you as soon as possible.</p>
-                <p>You can also reach out via email or visit our FAQ section for quick help.</p>
+                <p>You can also reach out via email or visit our FAQ section for quick help.</p><br />
+                <img className="formLeftImage" src={faq2} alt="faq2 picture" />
             </div>
             <div className="contactFormRight">
                 <form onSubmit={handleSubmit}>

@@ -1,12 +1,6 @@
-/* SECTION DIVIDER */
-.sectionDivider {
-    width: 80%;
-    margin: 0.5rem auto;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
   .heroSection {
     background-color: white;
+    color: white;
     background-size: cover;       
     background-position: center; 
     background-repeat: no-repeat;
@@ -28,7 +22,7 @@
   
   .faqContent {
     flex: 1.5;
-    min-width: 300px;
+    min-width: 200px;
   }
   
   .faqImage {
@@ -51,6 +45,7 @@
     gap: 2rem;
     padding: 2rem;
     background-color: #f9f9f9;
+    color: white;
     justify-content: center;
     align-items: flex-start;
   }
@@ -67,7 +62,6 @@
   }
   
   .contactInfoLeft p {
-    color: #555;
     margin-bottom: 1rem;
   }
   
@@ -75,8 +69,8 @@
     flex: 1;
     min-width: 280px;
     max-width: 500px;
-    background-color: #fff;
-    padding: 2rem;
+    background-color:rgb(31, 41, 55);
+    padding: 0.8rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     border-radius: 8px;
   }
@@ -89,6 +83,7 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: white;
   }
   
   .formGroup input,
@@ -111,12 +106,16 @@
   button[type="submit"]:hover {
     background-color: #0056b3;
   }
+  .formLeftImage {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 490px;
+      height: auto;
+      border-radius: 10px;
+  }
   
-
-.sectionDivider {
-  width: 90%;
-  margin: 2rem auto;
-}
 /* Universal base styling for the Contact Us page */
 
 body {

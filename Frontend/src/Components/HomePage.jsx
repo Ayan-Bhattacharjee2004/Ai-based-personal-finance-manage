@@ -12,7 +12,7 @@ import Footer from "../Components/AboutPage/Footer"; //footer section
 
 const HomePage = () => {
   return (
-    <div className="bg-[#030712] min-h-screen min-w-screen overflow-x-hidden  text-white font-sans">
+    <div className="bg-[#1f2937] min-h-screen min-w-screen overflow-x-hidden  text-white font-sans">
       {/* Navbar */}
       <nav className="flex items-center justify-between px-22 py-2">
         <div className="flex items-center gap-2">

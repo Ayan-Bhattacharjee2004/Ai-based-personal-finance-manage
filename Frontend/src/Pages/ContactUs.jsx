@@ -9,12 +9,8 @@ function ContactUs () {
     return (
         <div className="ContactPageWrapper">
         <HeroSection/>
-        <div className="sectionDivider"></div>
         <Form/>
-        <div className="sectionDivider"></div>
-        <h2 align="center"><b>Most asked questions!</b></h2><br />
         <FAQ/>
-        <div className="sectionDivider"></div>
         <Footer/>
         </div>
     ) 

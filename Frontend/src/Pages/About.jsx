@@ -5,9 +5,9 @@ import Footer from '../Components/AboutPage/Footer';
 function About() {
   return (
     <div className="aboutPageWrapper">
-      <div className="sectionDivider"></div>
+      
       {/* WHY WE EXIST SECTION */}
-      <section className="whyWeExist">
+      <section className="whyWeExist bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2>Why We Exist</h2>
         <p>
           Managing money shouldn’t be complicated. In a world full of overwhelming spreadsheets,
@@ -20,10 +20,10 @@ function About() {
         </p>
       </section>
 
-      <div className="sectionDivider"></div>
+      
 
       {/* HOW IT WORKS SECTION */}
-      <section className="howItWorks">
+      <section className="howItWorks bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2>How It Works</h2>
         <div className="stepsContainer">
           <div className="step">
@@ -41,10 +41,10 @@ function About() {
         </div>
       </section>
 
-      <div className="sectionDivider"></div>
+    
 
       {/* MEET OUR TEAM SECTION */}
-      <section className="meetOurTeam">
+      <section className="meetOurTeam bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2>Meet Our Team</h2>
         <div className="teamContainer">
           <div className="teamMember">
