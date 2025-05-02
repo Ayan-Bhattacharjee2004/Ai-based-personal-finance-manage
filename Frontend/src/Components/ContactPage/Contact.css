@@ -1,6 +1,4 @@
   .heroSection {
-    background-color: white;
-    color: white;
     background-size: cover;       
     background-position: center; 
     background-repeat: no-repeat;
@@ -14,6 +12,7 @@
 
   .faqImageSection {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     padding: 2rem;
     background-color: #f0ebeb;
@@ -21,8 +20,9 @@
   }
   
   .faqContent {
-    flex: 1.5;
-    min-width: 200px;
+    width: 38.1%;
+    height: auto;
+    margin-left: 50px;
   }
   
   .faqImage {
@@ -54,6 +54,7 @@
     flex: 1;
     min-width: 280px;
     max-width: 500px;
+    margin-right: 160px;
   }
   
   .contactInfoLeft h2 {
@@ -69,7 +70,6 @@
     flex: 1;
     min-width: 280px;
     max-width: 500px;
-    background-color:rgb(31, 41, 55);
     padding: 0.8rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
     border-radius: 8px;
@@ -96,6 +96,8 @@
   
   button[type="submit"] {
     padding: 0.75rem 1.5rem;
+    width: 40%;
+    align-self: center;
     background-color: #007bff;
     color: white;
     border: none;
@@ -119,14 +121,8 @@
 /* Universal base styling for the Contact Us page */
 
 body {
-  background-color: #ffffff;  /* pure white background */
-  color: #222222;             /* default text color */
+  color: #ffffff;             /* default text color */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-}
-
-section {
-  padding: 2rem;
-  background-color: #ffffff;  /* ensure sections stay white unless overridden */
 }

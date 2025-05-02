@@ -13,8 +13,10 @@ import faq3 from "../../assets/faq3.jpg";
 const FAQ = () => {
   return (
     <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
+       <div className="faqContent">
+       <h1><b>Need help?</b></h1>
+      </div>
       <div className="faqContent">
-    
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>What is BudgetBee?</Typography>
@@ -91,13 +93,6 @@ const FAQ = () => {
             </Typography>
           </AccordionDetails>
         </Accordion>
-      </div>
-     
-      <div className="faqImage">
-        <img
-          src={faq3}
-          alt="Support"
-        />
       </div>
     </section>
   );
