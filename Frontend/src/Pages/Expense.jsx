@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ExpenseForm from '../Components/Expense/ExpenseForm';
 import ExpenseList from '../Components/Expense/ExpenceList';
 import axios from 'axios';
+import "./Income.css"; // reuse Income styles
 
 const Expense = () => {
   const [expenses, setExpenses] = useState([]);
@@ -92,20 +93,22 @@ const Expense = () => {
 
   return (
     <div className='IncomeC'>
-      {showForm ? (
-        <ExpenseForm
-          onSubmit={handleAddOrUpdate}
-          editingData={editingExpense}
-          onCancel={handleCancel}
-        />
-      ) : (
-        <ExpenseList
-          expenses={expenses}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-          onAdd={handleAddClick}
-        />
-      )}
+      <div className='content-wrapper'>
+        {showForm ? (
+          <ExpenseForm
+            onSubmit={handleAddOrUpdate}
+            editingData={editingExpense}
+            onCancel={handleCancel}
+          />
+        ) : (
+          <ExpenseList
+            expenses={expenses}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            onAdd={handleAddClick}
+          />
+        )}
+      </div>
     </div>
   );
 };

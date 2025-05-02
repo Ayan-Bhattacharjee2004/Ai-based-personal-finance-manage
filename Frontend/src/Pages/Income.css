@@ -1,7 +1,8 @@
 .IncomeC {
     width: 100vw;
     min-height: 100vh;
-    background-color: aqua;
+    background: linear-gradient(90deg,rgba(8, 10, 48, 1) 35%, rgba(8, 44, 105, 1) 100%);
+    
     padding: 2rem 1rem;
     box-sizing: border-box;
     display: flex;
@@ -12,6 +13,6 @@
   
   .content-wrapper {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
   }
   

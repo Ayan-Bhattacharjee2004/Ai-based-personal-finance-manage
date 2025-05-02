@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    color: #ddd;
   }
   
   /* Modal content */
@@ -43,4 +44,8 @@
   .modal-form label {
     margin-bottom: 5px;
     font-weight: 500;
+  }
+  
+  .footerfor{
+    color: white;
   }

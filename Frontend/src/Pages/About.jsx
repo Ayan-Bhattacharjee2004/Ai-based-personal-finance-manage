@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Components/AboutPage/About.css';
 import Footer from '../Components/AboutPage/Footer';
+import AyanImage from "../assets/IMG_20250428_183516091_HDR_PORTRAIT~2.png";
 
 function About() {
   return (
@@ -48,7 +49,7 @@ function About() {
         <h2>Meet Our Team</h2>
         <div className="teamContainer">
           <div className="teamMember">
-            <img src="team-member-1.jpg" alt="Team Member 1" className="teamImage" />
+            <img src={AyanImage} alt="Team Member 1" className="teamImage" />
             <h3>Ayan Bhattacharjee</h3>
             <p>CEO & Founder</p>
             <p>Ayan leads our mission to simplify personal finance using AI.</p>
