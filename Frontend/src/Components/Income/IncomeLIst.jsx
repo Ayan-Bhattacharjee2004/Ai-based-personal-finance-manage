@@ -135,7 +135,7 @@ const IncomeList = ({ incomes, onEdit, onDelete, onAdd }) => {
   return (
     <div style={{ marginTop: "40px" }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
+        <Typography variant="h5" fontWeight="bold" gutterBottom color="white">
           <AccountBalanceWalletIcon /> INCOME HISTORY
         </Typography>
         <Button
@@ -168,17 +168,60 @@ const IncomeList = ({ incomes, onEdit, onDelete, onAdd }) => {
 
       <div className="Chart">
         <BarChart
-          xAxis={[{ scaleType: 'band', data: barChartData.map((item) => item.category) }]}
-          series={[{ data: barChartData.map((item) => item.value), label: "Income by Category" }]}
+          xAxis={[{ 
+            scaleType: 'band', 
+            data: barChartData.map((item) => item.category),
+            tickLabelStyle: { fill: 'white' }, // Change x-axis labels to white
+            axisLine: { stroke: 'white' }, // Make x-axis line white
+            tickLine: { stroke: 'white' }, // Make x-axis tick lines white
+          }]}
+          yAxis={[{
+            tickLabelStyle: { fill: 'white' }, // Change y-axis labels to white
+            axisLine: { stroke: 'white' }, // Make y-axis line white
+            tickLine: { stroke: 'white' }, // Make y-axis tick lines white
+            gridLine: { stroke: 'rgba(255, 255, 255, 0.2)' } // Make grid lines white with transparency
+          }]}
+          series={[{ 
+            data: barChartData.map((item) => item.value), 
+            label: "Income by Category",
+            color: '#6c63ff' // Keep the bar color as your primary color
+          }]}
           height={300}
           width={500}
           margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fill: 'white', // Change legend labels to white
+              }
+            }
+          }}
         />
 
         <PieChart
-          series={[{ data: pieChartData }]}
+          series={[{ 
+            data: pieChartData,
+            highlightScope: { faded: 'global', highlighted: 'item' },
+            faded: { innerRadius: 30, additionalRadius: -30 },
+            arcLabel: (item) => `${item.label}`,
+            arcLabelMinAngle: 45
+          }]}
           width={400}
           height={250}
+          slotProps={{
+            legend: {
+              labelStyle: {
+                fill: 'white', // Change pie chart legend labels to white
+              }
+            },
+            arcLabel: {
+              style: {
+                fill: 'white', // Make arc labels white
+                fontSize: 12,
+                fontWeight: 'bold'
+              }
+            }
+          }}
         />
       </div>
 

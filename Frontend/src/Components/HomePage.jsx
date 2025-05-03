@@ -35,7 +35,7 @@ const HomePage = () => {
 
         <div className="flex gap-4">
           <Link to="/login">
-          <button className="text-white px-6 py-3 rounded-full font-semibold hover:opacity-90">
+          <button className="text-white bg-black px-6 py-3 rounded-full font-semibold hover:opacity-90">
               Login
             </button>
           </Link>
@@ -68,7 +68,7 @@ const HomePage = () => {
               </button>
             </Link>
             <button className="flex items-center gap-2 text-white">
-              <div className="p-2 border-1 border-white rounded-full">
+              <div className="text-white bg-black px-6 py-3 rounded-full font-semibold hover:opacity-90">
                 <FaPlay size={8} />
               </div>
               Watch Video
