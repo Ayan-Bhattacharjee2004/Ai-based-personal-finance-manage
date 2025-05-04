@@ -35,7 +35,20 @@ const HomePage = () => {
 
         <div className="flex gap-4">
           <Link to="/login">
-          <button className="text-white bg-black px-6 py-3 rounded-full font-semibold hover:opacity-90">
+            <button
+              style={{
+                color: 'white',
+                backgroundColor: 'black',
+                paddingLeft: '1.5rem', // 6px
+                paddingRight: '1.5rem', // 6px
+                paddingTop: '0.75rem', // 3px
+                paddingBottom: '0.75rem', // 3px
+                fontWeight: '600', // font-semibold
+                transition: 'opacity 0.3s', // hover effect transition
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = 0.9)}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = 1)}
+            >
               Login
             </button>
           </Link>
@@ -67,12 +80,13 @@ const HomePage = () => {
                 Get Started
               </button>
             </Link>
-            <button className="flex items-center gap-2 text-white">
-              <div className="text-white bg-black px-6 py-3 rounded-full font-semibold hover:opacity-90">
+            <button style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', backgroundColor: "black" }}>
+              <div style={{ backgroundColor: 'black', color: 'white', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <FaPlay size={8} />
               </div>
               Watch Video
             </button>
+
           </div>
         </div>
 
