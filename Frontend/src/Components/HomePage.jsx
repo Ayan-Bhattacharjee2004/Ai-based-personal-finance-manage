@@ -178,7 +178,7 @@ const HomePage = () => {
       </section>
 
       {/* Additional CSS for animations */}
-      <style jsx>{`
+      <style >{`
         @keyframes ripple {
           to {
             transform: scale(4);
