@@ -14,7 +14,7 @@ const FAQ = () => {
   return (
     <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
        <div className="faqContent">
-       <h1><b>Need help?</b></h1>
+       <h2>Need help?</h2>
       </div>
       <div className="faqContent">
         <Accordion>
