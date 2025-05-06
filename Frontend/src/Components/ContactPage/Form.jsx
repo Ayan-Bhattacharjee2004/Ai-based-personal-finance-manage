@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import faq2 from "../../assets/FAQ2.JPG"
+import faq2 from "../../assets/FAQ2.JPG";
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -9,14 +9,44 @@ const ContactForm = () => {
         message: '',
     });
 
+    const [loading, setLoading] = useState(false);  // To manage loading state
+    const [success, setSuccess] = useState(null);   // To manage success or error states
+    const [error, setError] = useState(null);       // To manage error state
+
+    // Handle form input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    // Handle form submission
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Message sent successfully!');
+        setLoading(true);  // Start loading
+
+        try {
+            // Send POST request to the backend API
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setSuccess(true);  // Success message if email sent
+                setFormData({ name: '', email: '', message: '' }); // Clear form
+            } else {
+                setError(data.message || "Something went wrong!");  // Handle any errors
+            }
+        } catch (err) {
+            setError("Network error. Please try again.");  // Handle network errors
+        }
+
+        setLoading(false);  // Stop loading
     };
 
     return (
@@ -64,8 +94,13 @@ const ContactForm = () => {
                         ></textarea>
                     </div>
 
-                    <button type="submit">Send Message</button>
+                    <button type="submit" disabled={loading}>
+                        {loading ? "Sending..." : "Send Message"}
+                    </button>
                 </form>
+
+                {success && <p className="successMessage">Your message has been sent successfully!</p>}
+                {error && <p className="errorMessage">{error}</p>}
             </div>
         </section>
     );
