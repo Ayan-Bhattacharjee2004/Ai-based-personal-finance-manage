@@ -1,74 +1,80 @@
-import React, { useState } from 'react';
-import './Contact.css';
-import faq2 from "../../assets/FAQ2.JPG"
+import React, { useState } from "react";
 
 const ContactForm = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setResponseMessage("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert('Message sent successfully!');
-    };
+    const contactData = { name, email, message };
+    
+    try {
+      const response = await fetch("http://localhost:7500/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactData),
+      });
 
-    return (
-        <section className="contactFormSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
-            <div className="contactInfoLeft">
-                <h2>Get in Touch</h2>
-                <p>Have questions, suggestions, or feedback? We’d love to hear from you. Fill out the form and we’ll get back to you as soon as possible.</p>
-                <p>You can also reach out via email or visit our FAQ section for quick help.</p><br />
-                <img className="formLeftImage" src={faq2} alt="faq2 picture" />
-            </div>
-            <div className="contactFormRight">
-                <form onSubmit={handleSubmit}>
-                    <div className="formGroup">
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+      if (response.ok) {
+        setResponseMessage("Message sent successfully!");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setResponseMessage("Error sending message. Please try again.");
+      }
+    } catch (error) {
+      setResponseMessage("Error sending message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
-                    <div className="formGroup">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-
-                    <div className="formGroup">
-                        <label htmlFor="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={formData.message}
-                            onChange={handleChange}
-                            required
-                        ></textarea>
-                    </div>
-
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
-    );
+  return (
+    <div>
+      <h1>Contact Us</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Message:</label>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </button>
+      </form>
+      {responseMessage && <p>{responseMessage}</p>}
+    </div>
+  );
 };
 
 export default ContactForm;

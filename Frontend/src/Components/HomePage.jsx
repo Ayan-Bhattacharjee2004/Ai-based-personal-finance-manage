@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import phone1 from "../assets/Screenshot (37).png";
-import phone2 from "../assets/Phoneai.jpg";
 import logo from "../assets/BudgetBee.png";
 import WhyUs from "../Components/HomePage/WhyUs";
 import About from "../Pages/About";

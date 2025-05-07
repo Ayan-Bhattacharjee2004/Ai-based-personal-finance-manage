@@ -101,7 +101,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
         {/* Dashboard Header */}
         <div className="px-6 py-4">
           <h1 className="text-2xl font-bold">Dashboard</h1>
-          <p className="text-gray-500">Welcome Ekash Finance Management</p>
+          <p className="text-gray-500">Welcome <b>BudgetBee</b> Finance Tracker</p>
         </div>
 
         {/* Cards Section */}
@@ -224,7 +224,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale);
 
         {/* Footer */}
         <div className="text-center text-gray-400 py-4">
-          © Copyright <span className="font-bold text-blue-600">Ekash</span> | All Rights Reserved
+          © Copyright <span className="font-bold text-blue-600">BudgetBee</span> | All Rights Reserved
         </div>
       </div>
     </div>
