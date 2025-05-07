@@ -6,8 +6,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
-import CameraEnhanceIcon from '@mui/icons-material/CameraEnhance';
-import AIScanReceiptGemini from "../AIScanReceipt.jsx"; 
+import CameraEnhanceIcon from "@mui/icons-material/CameraEnhance";
+import AIScanReceiptGemini from "../AIScanReceipt.jsx";
+// Make sure these imports are at the top level
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
   const [accounts, setAccounts] = useState([]);
@@ -23,13 +26,14 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const token = localStorage.getItem('token'); // Fetch token from localStorage
+        const token = localStorage.getItem("token");
         const res = await axios.get("http://localhost:7500/api/accounts", {
-          headers: { Authorization: `Bearer ${token}` } // Add token in header
+          headers: { Authorization: `Bearer ${token}` },
         });
         setAccounts([...res.data, { name: "Create ac" }]);
       } catch (err) {
         console.error("Failed to fetch accounts:", err);
+        toast.error("Failed to load accounts.");
       }
     };
     fetchAccounts();
@@ -50,23 +54,32 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
     if (!trimmedName || isNaN(balance)) return;
 
     try {
-      const token = localStorage.getItem('token'); // Fetch token from localStorage
-      const response = await axios.post("http://localhost:7500/api/accounts", {
-        name: trimmedName,
-        balance,
-      }, {
-        headers: { Authorization: `Bearer ${token}` } // Add token in header
-      });
-      
-      // Add the new account to the accounts list
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:7500/api/accounts",
+        {
+          name: trimmedName,
+          balance,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
       const newAccount = response.data;
-      setAccounts([...accounts.filter(acc => acc.name !== "Create ac"), newAccount, { name: "Create ac" }]);
+      setAccounts([
+        ...accounts.filter((acc) => acc.name !== "Create ac"),
+        newAccount,
+        { name: "Create ac" },
+      ]);
       setAccount(trimmedName);
       setNewAccountName("");
       setNewAccountBalance("");
       setShowCreateAccount(false);
+      toast.success("Account created successfully!");
     } catch (error) {
       console.error("Error creating account:", error);
+      toast.error("Error creating account.");
     }
   };
 
@@ -99,19 +112,26 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
       initialBalance: newAccountBalance || 0,
     };
 
-    // Just pass the data to parent component which will handle the API call
-    onSubmit(data);
+    // Show toast notification before submitting
+    toast.success(editingData ? "Expense updated!" : "Expense added!");
+    
+    // Then submit the data
+    try {
+      await onSubmit(data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to save expense.");
+    }
   };
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 2
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 2,
     }).format(amount);
   };
 
-  // Handle scan complete
   const handleScanComplete = (scannedData) => {
     setAmount(scannedData.amount || "");
     setDate(scannedData.date ? dayjs(scannedData.date) : null);
@@ -120,7 +140,19 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
 
   return (
     <div className="transaction-form-container">
-      {/* Create Account Modal/Popup */}
+      {/* Make sure ToastContainer is positioned properly */}
+      <ToastContainer 
+        position="top-right" 
+        autoClose={3000} 
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       {showCreateAccount && (
         <div className="account-modal-overlay">
           <div className="account-modal">
@@ -148,7 +180,10 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
                 >
                   Save Account
                 </button>
-                <button className="cancel-btn" onClick={() => setShowCreateAccount(false)}>
+                <button
+                  className="cancel-btn"
+                  onClick={() => setShowCreateAccount(false)}
+                >
                   Cancel
                 </button>
               </div>
@@ -157,10 +192,8 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
         </div>
       )}
 
-      {/* Main Expense Form */}
       <h1>{editingData ? "Edit Expense" : "Add Expense"}</h1>
 
-      {/* AI Scan Button */}
       <AIScanReceiptGemini onScanComplete={handleScanComplete} />
 
       <form onSubmit={handleSubmit}>
@@ -182,8 +215,8 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
               <option value="">-- Select Account --</option>
               {accounts.map((acc, i) => (
                 <option key={i} value={acc.name}>
-                  {acc.name === "Create ac" 
-                    ? "Create new account" 
+                  {acc.name === "Create ac"
+                    ? "Create new account"
                     : `${acc.name} (Balance: ${formatCurrency(acc.balance)})`}
                 </option>
               ))}
@@ -192,7 +225,11 @@ const ExpenseForm = ({ onSubmit, editingData, onCancel }) => {
         </div>
 
         <label>Category</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        >
           <option value="">-- Select Category --</option>
           <option value="Utilities">Utilities</option>
           <option value="Rent">Rent</option>
