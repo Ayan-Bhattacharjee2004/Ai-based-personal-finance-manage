@@ -22,54 +22,62 @@
 
 /* Animation classes */
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-in-out forwards;
+  animation: fadeIn 1.2s ease-in-out forwards;
   opacity: 0;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
+  animation: slideUp 1.2s ease-out forwards;
 }
 
 .animate-slide-down {
-  animation: slideDown 0.8s ease-out forwards;
+  animation: slideDown 1.2s ease-out forwards;
 }
 
 /* Feature box staggered animations */
 .feature-box {
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(10px); /* Initial slight offset */
 }
 
 .feature-box:nth-child(1) {
-  transition-delay: 0.1s;
+  transition-delay: 0.2s;
 }
 
 .feature-box:nth-child(2) {
-  transition-delay: 0.3s;
+  transition-delay: 0.4s;
 }
 
 .feature-box:nth-child(3) {
-  transition-delay: 0.5s;
+  transition-delay: 0.6s;
 }
 
 /* App image animation */
 .app-image {
-  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transition-delay: 0.6s;
 }
+
+.app-image.animate-fade-in:hover {
+  transform: translateY(0) scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+
 
 /* Hover effects for feature boxes */
 .feature-box:hover {
   border-left: 4px solid #FCD34D;
   cursor: pointer;
+  box-shadow: 0 0 30px rgba(252, 211, 77, 0.25);
+  transform: scale(1.05);
+  transition: all 0.6s ease-in-out;
 }
 
 .feature-box:hover h3 {
-  transform: translateX(4px);
-  transition: transform 0.3s ease;
+  transform: translateX(6px);
+  transition: transform 0.4s ease;
 }
-
-/* Subtle highlight glow on hover */
-.feature-box:hover {
-  box-shadow: 0 0 25px rgba(252, 211, 77, 0.2);
-}
-

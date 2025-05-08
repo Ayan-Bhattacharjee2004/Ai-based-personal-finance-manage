@@ -40,44 +40,75 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="contactFormSection">
-      <section className="formLeftImage">
-        <img src={faq2} alt="left side illustration" />
-      </section>
-      <section className="contactFormRight">
-        <form onSubmit={handleSubmit}>
-          <div className="formGroup">
-            <label>Name:</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="formGroup">
-            <label>Email:</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="formGroup">
-            <label>Message:</label>
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </form>
-        {responseMessage && <p>{responseMessage}</p>}
-      </section>
+    <div className="min-h-screen bg-gradient-to-r from-[#030712] to-[#4d556b] flex items-center justify-center p-6">
+      <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 overflow-hidden max-w-4xl w-full">
+        {/* Left Image Section */}
+        <div className="md:w-1/2">
+          <img
+            src={faq2}
+            alt="Contact visual"
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        {/* Right Form Section */}
+        <div className="md:w-1/2 p-6 md:p-8">
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">Contact Us</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows="4"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </form>
+          {responseMessage && (
+            <p className="mt-4 text-sm text-center text-green-600">
+              {responseMessage}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
