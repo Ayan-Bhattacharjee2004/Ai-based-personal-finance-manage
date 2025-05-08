@@ -3,154 +3,10 @@ body {
   overflow-x: hidden;
 }
 
-/* WHY WE EXIST */
-.whyWeExist {
-  padding: 4rem 2rem;
-  background-color: #000000;
-  color: #424242;
-  text-align: center;
-}
-
-.whyWeExist h2 {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: #ffffff;
-}
-
-@media (min-width: 768px) {
-  .whyWeExist {
-      font-size: 3rem; 
-  }
-}
-
-.whyWeExist p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto 1.5rem auto;
-  color: #ffffff;
-}
-
-/* HOW IT WORKS */
-.howItWorks {
-  padding: 4rem 2rem;
-  background-color: #000000;
-  text-align: center;
-  color: #1a237e;
-}
-
-.howItWorks h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-
-
-.step {
-  background-color: #1f2937;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.step h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.75rem;
-  color: #ffffff;
-}
-
-.step p {
-  font-size: 1rem;
-  color: #616161;
-}
-
-/* Responsive for larger screens */
-@media (min-width: 768px) {
-  .stepsContainer {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .step {
-    flex: 1;
-  }
-}
-
-/* MEET OUR TEAM SECTION */
-.meetOurTeam {
-  padding: 4rem 2rem;
-  background-color: #000000;
-  text-align: center;
-  color: #424242;
-}
-
-.meetOurTeam h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-
-
-.teamMember {
-  background-color: #1f2937;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.teamImage {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.teamMember h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-.teamMember p {
-  font-size: 0.95rem;
-  color: #616161;
-  margin-bottom: 0.5rem;
-}
-
-/* Responsive for larger screens */
-@media (min-width: 768px) {
-  .teamContainer {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .teamMember {
-    flex: 1;
-  }
-}
-
-/* SECTION DIVIDER */
-.sectionDivider {
-  width: 80%;
-  margin: 0.5rem auto;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
 .aboutPageWrapper {
   color: white;
   font-family: 'Segoe UI', sans-serif;
 }
-
-
 
 h2 {
   font-size: 2.5rem;
@@ -166,7 +22,14 @@ p {
   text-align: center;
 }
 
-/* Animation classes */
+/* SECTION DIVIDER */
+.sectionDivider {
+  width: 80%;
+  margin: 0.5rem auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ANIMATIONS */
 .animate-fade-in {
   opacity: 1;
   transform: translateY(0);
@@ -194,35 +57,83 @@ p {
   }
 }
 
-/* Steps and team styling */
-.stepsContainer,
-.teamContainer {
+/* WHY WE EXIST SECTION */
+.whyWeExist {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.whyWeExist p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* HOW IT WORKS SECTION */
+.howItWorks {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.stepsContainer {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
   justify-content: center;
 }
 
-.stepsContainer {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.step {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease, transform 0.3s ease;
+}
+
+.step:hover {
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
+  border: 1px solid rgba(255, 193, 7, 0.7);
+  transform: translateY(-8px);
+}
+
+.step h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+}
+
+.step p {
+  font-size: 1rem;
+  color: #616161;
+}
+
+/* MEET OUR TEAM SECTION */
+.meetOurTeam {
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
 .teamContainer {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
 }
 
-.step,
 .teamMember {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 1rem;
-  text-align: center;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
+  transition: box-shadow 0.3s ease, border 0.3s ease, transform 0.3s ease;
 }
 
-.step:hover,
 .teamMember:hover {
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
+  border: 1px solid rgba(255, 193, 7, 0.7);
   transform: translateY(-8px);
 }
 
@@ -234,31 +145,15 @@ p {
   margin-bottom: 1rem;
   border: 2px solid #facc15;
 }
-.step {
-  /* Existing styles */
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: box-shadow 0.3s ease, border 0.3s ease;
+
+.teamMember h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
 }
 
-/* Optional: on hover, enhance the glow */
-.step:hover {
-  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
-  border: 1px solid rgba(255, 193, 7, 0.7);
-}
-.teamMember {
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: box-shadow 0.3s ease, border 0.3s ease;
-}
-
-.teamMember:hover {
-  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
-  border: 1px solid rgba(255, 193, 7, 0.7);
+.teamMember p {
+  font-size: 0.95rem;
+  color: #616161;
+  margin-bottom: 0.5rem;
 }

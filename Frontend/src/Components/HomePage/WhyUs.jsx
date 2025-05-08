@@ -8,7 +8,7 @@ const WhyUs = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+          entry.target.classList.add('animate-fade-in'); // Adding fade-in class when visible
         }
       });
     }, { threshold: 0.1 });
@@ -22,6 +22,12 @@ const WhyUs = () => {
     const image = document.querySelector('.app-image');
     if (image) observer.observe(image);
 
+    // Observe the header and paragraph text
+    const header = document.querySelector('.header-text');
+    const paragraph = document.querySelector('.subheader-text');
+    if (header) observer.observe(header);
+    if (paragraph) observer.observe(paragraph);
+
     // Cleanup observer on component unmount
     return () => observer.disconnect();
   }, []);
@@ -30,11 +36,11 @@ const WhyUs = () => {
     <div className="min-h-screen text-white font-sans pt-24 bg-gradient-to-r from-[#030712] to-[#4d556b]" >
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center animate-slide-down">Why Choose BudgetBee?</h2>
-        <p className="text-gray-300 text-center max-w-3xl mb-12 text-lg animate-slide-up" 
-   style={{ margin: '0 auto' }}>
-  We built BudgetBee to help you take control of your finances with ease. Here's what makes us different.
-</p>
+        <h2 className="header-text text-4xl md:text-5xl font-bold mb-4 text-center animate-slide-down">Why Choose BudgetBee?</h2>
+        <p className="subheader-text text-gray-300 text-center max-w-3xl mb-12 text-lg animate-slide-up" 
+           style={{ margin: '0 auto' }}>
+          We built BudgetBee to help you take control of your finances with ease. Here's what makes us different.
+        </p>
         
         {/* Main Content Wrapper: Flex layout */}
         <div className="flex justify-center items-center space-x-8">

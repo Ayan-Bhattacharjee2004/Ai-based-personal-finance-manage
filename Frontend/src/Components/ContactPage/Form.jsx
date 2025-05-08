@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import faq2 from "../../assets/faq2.jpg";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const ContactForm = () => {
     setResponseMessage("");
 
     const contactData = { name, email, message };
-    
+
     try {
       const response = await fetch("http://localhost:7500/api/contact", {
         method: "POST",
@@ -39,40 +40,44 @@ const ContactForm = () => {
   };
 
   return (
-    <div>
-      <h1>Contact Us</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Message:</label>
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </button>
-      </form>
-      {responseMessage && <p>{responseMessage}</p>}
+    <div className="contactFormSection">
+      <section className="formLeftImage">
+        <img src={faq2} alt="left side illustration" />
+      </section>
+      <section className="contactFormRight">
+        <form onSubmit={handleSubmit}>
+          <div className="formGroup">
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="formGroup">
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="formGroup">
+            <label>Message:</label>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </button>
+        </form>
+        {responseMessage && <p>{responseMessage}</p>}
+      </section>
     </div>
   );
 };

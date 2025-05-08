@@ -47,15 +47,15 @@ function About() {
       <section className="howItWorks bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2 className="animate-slide-down">How It Works</h2>
         <div className="stepsContainer">
-          <div className="step">
+          <div className="step ">
             <h3>1. Connect Your Accounts</h3>
             <p>Securely link your bank accounts, credit cards, and bills in just a few clicks.</p>
           </div>
-          <div className="step">
+          <div className="step bg-gray-900">
             <h3>2. Let AI Analyze</h3>
             <p>Our AI instantly tracks your spending, income, and financial patterns.</p>
           </div>
-          <div className="step">
+          <div className="step bg-gray-900">
             <h3>3. Get Smart Insights</h3>
             <p>Receive real-time suggestions, saving goals, and budget tips tailored to you.</p>
           </div>
@@ -85,12 +85,12 @@ function About() {
             <p>Kasif ensures our product delivers value to our users every day.</p>
           </div>
           <div className="teamMember">
-            <img src={YounusImage} alt="Team Member 4" className="teamImage" />
+            <img src={YounusImage} alt="Team Member 4" className="teamImage " />
             <h3>Younus Hossain</h3>
             <p>Marketing Director</p>
             <p>Younus leads our outreach and communication strategies to grow our user base.</p>
           </div>
-        </div>
+        </div> 
       </section>
 
     </div>
