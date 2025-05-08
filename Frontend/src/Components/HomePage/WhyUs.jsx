@@ -31,9 +31,10 @@ const WhyUs = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center animate-slide-down">Why Choose BudgetBee?</h2>
-        <p className="text-gray-300 text-center max-w-3xl mx-auto mb-12 text-lg animate-slide-up">
-          We built BudgetBee to help you take control of your finances with ease. Here's what makes us different.
-        </p>
+        <p className="text-gray-300 text-center max-w-3xl mb-12 text-lg animate-slide-up" 
+   style={{ margin: '0 auto' }}>
+  We built BudgetBee to help you take control of your finances with ease. Here's what makes us different.
+</p>
         
         {/* Main Content Wrapper: Flex layout */}
         <div className="flex justify-center items-center space-x-8">

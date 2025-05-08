@@ -48,13 +48,7 @@ body {
   color: #ffffff;
 }
 
-.stepsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+
 
 .step {
   background-color: #1f2937;
@@ -62,10 +56,6 @@ body {
   border-radius: 1rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-}
-
-.step:hover {
-  transform: translateY(-4px);
 }
 
 .step h3 {
@@ -106,13 +96,7 @@ body {
   font-weight: 600;
 }
 
-.teamContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 100%;
-  margin: 0 auto;
-}
+
 
 .teamMember {
   background-color: #1f2937;
@@ -120,10 +104,6 @@ body {
   border-radius: 1rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease;
-}
-
-.teamMember:hover {
-  transform: translateY(-4px);
 }
 
 .teamImage {
@@ -164,4 +144,121 @@ body {
   width: 80%;
   margin: 0.5rem auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.aboutPageWrapper {
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #facc15; /* amber-400 */
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.step,
+.teamMember {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.animate-slide-down {
+  animation: slideDown 1s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Steps and team styling */
+.stepsContainer,
+.teamContainer {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.stepsContainer {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.teamContainer {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.step,
+.teamMember {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.step:hover,
+.teamMember:hover {
+  transform: translateY(-8px);
+}
+
+.teamImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid #facc15;
+}
+.step {
+  /* Existing styles */
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* Optional: on hover, enhance the glow */
+.step:hover {
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
+  border: 1px solid rgba(255, 193, 7, 0.7);
+}
+.teamMember {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.teamMember:hover {
+  box-shadow: 0 0 18px rgba(255, 193, 7, 0.8);
+  border: 1px solid rgba(255, 193, 7, 0.7);
 }

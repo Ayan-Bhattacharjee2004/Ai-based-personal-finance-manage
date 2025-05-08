@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../Components/AboutPage/About.css';
-import Footer from '../Components/AboutPage/Footer';
 import AyanImage from "../assets/IMG_20250428_183516091_HDR_PORTRAIT~2.png";
+import KasifImage from "../assets/KasifImage.jpg"
+import YounusImage from "../assets/YounusImage.jpg"
+
+import { ToastContainer, toast } from "react-toastify";
+
 
 function About() {
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.step, .teamMember').forEach(el => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="aboutPageWrapper">
-      
+
       {/* WHY WE EXIST SECTION */}
       <section className="whyWeExist bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2>Why We Exist</h2>
@@ -21,11 +43,9 @@ function About() {
         </p>
       </section>
 
-      
-
       {/* HOW IT WORKS SECTION */}
       <section className="howItWorks bg-gradient-to-r from-[#030712] to-[#4d556b]">
-        <h2>How It Works</h2>
+        <h2 className="animate-slide-down">How It Works</h2>
         <div className="stepsContainer">
           <div className="step">
             <h3>1. Connect Your Accounts</h3>
@@ -42,11 +62,9 @@ function About() {
         </div>
       </section>
 
-    
-
       {/* MEET OUR TEAM SECTION */}
       <section className="meetOurTeam bg-gradient-to-r from-[#030712] to-[#4d556b]">
-        <h2>Meet Our Team</h2>
+        <h2 className="animate-slide-down">Meet Our Team</h2>
         <div className="teamContainer">
           <div className="teamMember">
             <img src={AyanImage} alt="Team Member 1" className="teamImage" />
@@ -61,19 +79,20 @@ function About() {
             <p>Robiul is the brains behind our innovative AI technology.</p>
           </div>
           <div className="teamMember">
-            <img src="team-member-3.jpg" alt="Team Member 3" className="teamImage" />
+            <img src={KasifImage} alt="Team Member 3" className="teamImage" />
             <h3>Kasif Sk</h3>
             <p>Head of Product</p>
             <p>Kasif ensures our product delivers value to our users every day.</p>
           </div>
           <div className="teamMember">
-            <img src="team-member-4.jpg" alt="Team Member 4" className="teamImage" />
+            <img src={YounusImage} alt="Team Member 4" className="teamImage" />
             <h3>Younus Hossain</h3>
             <p>Marketing Director</p>
             <p>Younus leads our outreach and communication strategies to grow our user base.</p>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
