@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import faq2 from "../../assets/faq2.jpg";
+import faq2 from "../../assets/5124556.png";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
@@ -47,7 +47,7 @@ const ContactForm = () => {
           <img
             src={faq2}
             alt="Contact visual"
-            className="h-full w-full object-cover"
+            className="h-full "
           />
         </div>
 
