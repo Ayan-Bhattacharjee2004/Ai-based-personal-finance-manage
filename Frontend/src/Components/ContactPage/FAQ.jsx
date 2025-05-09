@@ -13,9 +13,8 @@ import faq3 from "../../assets/faq3.jpg";
 const FAQ = () => {
   return (
     <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
-       <div className="faqContent">
-       <h2>Need help?</h2>
-      </div>
+       <div><h2>Need help?</h2>
+       <p>Here are some of the most frequently asked question and the solution.</p></div>
       <div className="faqContent">
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>

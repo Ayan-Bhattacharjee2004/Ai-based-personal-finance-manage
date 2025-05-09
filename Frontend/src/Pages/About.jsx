@@ -47,7 +47,7 @@ function About() {
       <section className="howItWorks bg-gradient-to-r from-[#030712] to-[#4d556b]">
         <h2 className="animate-slide-down">How It Works</h2>
         <div className="stepsContainer">
-          <div className="step ">
+          <div className="step bg-gray-900">
             <h3>1. Connect Your Accounts</h3>
             <p>Securely link your bank accounts, credit cards, and bills in just a few clicks.</p>
           </div>

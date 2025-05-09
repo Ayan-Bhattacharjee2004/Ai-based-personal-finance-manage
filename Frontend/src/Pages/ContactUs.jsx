@@ -8,7 +8,7 @@ import Form from "../Components/ContactPage/Form";
 function ContactUs () {
     return (
         <div className="ContactPageWrapper">
-        {/* <HeroSection/> */}
+        <HeroSection/>
         <Form/>
         <FAQ/>
         <Footer/>

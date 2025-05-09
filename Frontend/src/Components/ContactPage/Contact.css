@@ -16,25 +16,17 @@
   padding: 2rem;
   background-color: #f0ebeb;
   gap: 2rem;
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically */
+  min-height: 100vh; /* Ensure the section takes up at least full screen height */
 }
+
 
 .faqContent {
-  width: 38.1%;
+  width: 56.1%;
   height: auto;
-  margin-left: 50px;
-}
-
-.faqImage {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.faqImage img {
-  max-width: 590px;
-  height: auto;
-  border-radius: 10px;
+  justify-self: center;
+  background: #ffffff;
 }
 
 .contactFormSection {
@@ -42,7 +34,8 @@
   flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: 
+#f9f9f9;
   color: white;
   justify-content: center;
   align-items: flex-start;
@@ -96,7 +89,8 @@ button[type="submit"] {
   padding: 0.75rem 1.5rem;
   width: 40%;
   align-self: center;
-  background-color: #007bff;
+  background-color: 
+#007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -104,7 +98,8 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: 
+#0056b3;
 }
 
 .formLeftImage {
@@ -117,8 +112,15 @@ button[type="submit"]:hover {
   border-radius: 10px;
 }
 body {
-  color: #ffffff;
+  color: 
+#ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+}
+.ContactPageWrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
