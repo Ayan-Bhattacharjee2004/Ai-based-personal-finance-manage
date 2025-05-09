@@ -90,7 +90,7 @@ const Dashboard = () => {
 
   return (
     <div className="relative min-h-screen">
-      <div className="flex h-screen w-screen bg-gray-50">
+      <div className="flex h-screen w-screen bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
         {/* Sidebar */}
         <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6 space-y-6">
           <div className="text-white text-2xl"><RealEstateAgentIcon /></div>
@@ -130,13 +130,13 @@ const Dashboard = () => {
 
           {/* Header */}
           <div className="px-6 py-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-black">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-white">Dashboard</h1>
           </div>
           <p className="px-6 text-gray-500">Welcome to <b>BudgetBee</b> Finance Tracker</p>
 
           {/* Accounts Section */}
           <div className="px-6 py-4">
-            <h2 className="text-xl font-semibold text-blue-900 mb-4">Your Accounts</h2>
+          <h2 className="!text-[30px] font-semibold !text-white mb-4">Your Accounts</h2>
             {loading ? (
               <div className="text-center py-4">Loading accounts...</div>
             ) : error ? (
