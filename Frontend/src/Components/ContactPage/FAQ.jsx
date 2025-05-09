@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -9,14 +9,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Contact.css';
 import faq3 from "../../assets/faq3.jpg";
 
-
 const FAQ = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   return (
     <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
-       <div><h2>Need help?</h2>
-       <p>Here are some of the most frequently asked question and the solution.</p></div>
+      <div><h2>Need help?</h2>
+      <p>Here are some of the most frequently asked questions and the solution.</p></div>
       <div className="faqContent">
-        <Accordion>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>What is BudgetBee?</Typography>
           </AccordionSummary>
@@ -27,7 +32,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>How do I add an expense?</Typography>
           </AccordionSummary>
@@ -38,7 +43,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>What types of financial assistance does BudgetBee provide?</Typography>
           </AccordionSummary>
@@ -49,7 +54,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>How do I track my expenses on BudgetBee?</Typography>
           </AccordionSummary>
@@ -60,7 +65,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>Can I sync my bank account or payment methods with BudgetBee?</Typography>
           </AccordionSummary>
@@ -71,7 +76,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>How do I update my account settings?</Typography>
           </AccordionSummary>
@@ -82,7 +87,7 @@ const FAQ = () => {
           </AccordionDetails>
         </Accordion>
 
-        <Accordion>
+        <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography>Is my financial data safe with BudgetBee?</Typography>
           </AccordionSummary>

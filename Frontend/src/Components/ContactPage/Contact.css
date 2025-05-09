@@ -124,3 +124,14 @@ body {
   display: flex;
   flex-direction: column;
 }
+.faqContent .MuiAccordion-details {
+  background-color: rgba(0, 0, 0, 0.05);  /* Add background to highlighted answer */
+}
+
+.Mui-expanded {
+  background-color: #bdf6c9 !important;  /* Highlight expanded accordion */
+}
+
+.faqContent .MuiAccordionSummary-root {
+  font-weight: bold;
+}
