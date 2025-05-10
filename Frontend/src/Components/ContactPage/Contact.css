@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 .faqImageSection {
@@ -144,5 +144,5 @@ body {
 }
 
 .contact-glow:hover {
-  filter: drop-shadow(0 0 20px rgba(255, 234, 0, 0.761)); /* Stronger glow on hover */
+  filter: drop-shadow(0 0 20px rgba(74, 115, 190, 0.761)); /* Stronger glow on hover */
 }

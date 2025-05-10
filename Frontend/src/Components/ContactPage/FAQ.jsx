@@ -18,8 +18,8 @@ const FAQ = () => {
 
   return (
     <section className="faqImageSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
-      <div><h2>Need help?</h2>
-      <p>Here are some of the most frequently asked questions and the solution.</p></div>
+      <div><h2><b>Need help?</b></h2>
+      <p>You ask, we answer — here are the FAQs</p></div>
       <div className="faqContent">
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
