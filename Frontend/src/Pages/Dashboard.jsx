@@ -5,6 +5,7 @@ import { FaChartBar, FaWallet, FaUserFriends } from "react-icons/fa";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
 import RealEstateAgentIcon from '@mui/icons-material/RealEstateAgent';
+import { IoWallet } from "react-icons/io5";
 import axios from "axios";
 
 import Box from '@mui/material/Box';
@@ -101,24 +102,73 @@ const Dashboard = () => {
     plugins: { legend: { display: false } },
   };
 
-  // Removed unused groupByMonth function
-
   // Simple data for charts
   const chartMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
   const incomeData = [5000, 6000, 4500, 5500, 3000, 6000];
   const expenseData = [4000, 5000, 3500, 4500, 2000, 5000];
 
-  // Simplified LineChart rendering
+  // Sidebar menu items
+  const sidebarItems = [
+    { icon: <FaChartBar className="text-2xl" />, text: "Dashboard", route: "/" },
+    { icon: <FaWallet className="text-2xl" />, text: "Income", route: "/income" },
+    { icon: <IoWallet className="text-3xl" />, text: "Expense", route: "/expense" },
+    { icon: <FaUserFriends className="text-2xl" />, text: "Contacts", route: "/contact" },
+  ];
+
+  // Custom sidebar link component with popup text
+  const SidebarLink = ({ icon, text, onClick }) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+    
+    return (
+      <div 
+        className="relative py-4 w-full flex justify-center"
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        onClick={onClick}
+      >
+        <div className="text-white cursor-pointer hover:scale-110 transition-transform duration-200">
+          {icon}
+        </div>
+        
+        {showTooltip && (
+          <div className="absolute left-20 bg-blue-800 text-white px-3 py-2 rounded-md whitespace-nowrap shadow-lg z-50">
+            <div className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-2 h-2 bg-blue-800"></div>
+            {text}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="relative min-h-screen">
       <div className="flex h-screen w-screen bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
-        <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6 space-y-6">
-          <div className="text-white text-2xl"><RealEstateAgentIcon /></div>
-          <FaChartBar className="text-white text-2xl cursor-pointer" onClick={() => navigate('/income')} />
-          <FaWallet className="text-white text-2xl cursor-pointer" onClick={() => navigate('/expense')} />
-          <FaUserFriends className="text-white text-2xl" onClick={() => navigate("/contact")} />
-          <FiSettings className="text-white text-2xl mt-auto" />
+        {/* Sidebar with popup tooltips */}
+        <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6">
+          <div className="text-white text-2xl mb-8 relative group cursor-pointer">
+            <RealEstateAgentIcon />
+            <div className="absolute left-20 bg-blue-800 text-white px-3 py-2 rounded-md whitespace-nowrap shadow-lg z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-2 h-2 bg-blue-800"></div>
+              BudgetBee
+            </div>
+          </div>
+          
+          {sidebarItems.map((item, index) => (
+            <SidebarLink 
+              key={index}
+              icon={item.icon} 
+              text={item.text}
+              onClick={() => navigate(item.route)}
+            />
+          ))}
+          
+          <div className="mt-auto">
+            <SidebarLink 
+              icon={<FiSettings className="text-white text-2xl" />} 
+              text="Settings"
+              onClick={() => navigate("/settings")}
+            />
+          </div>
         </div>
 
         <div className="flex-1 ml-20 flex flex-col">
