@@ -40,6 +40,14 @@ const ContactForm = () => {
   };
 
   return (
+    <div>
+       <section className="heroSection bg-gradient-to-r from-[#030712] to-[#4d556b]">
+      <div className="hero-content">
+        <h1><b>Contact Us</b></h1>
+        <br />
+        <p><b>Questions, feedback, or ideas? We’re listening👂</b></p>
+      </div>
+    </section>
     <div className="min-h-screen bg-gradient-to-r from-[#030712] to-[#4d556b] flex items-center justify-center p-6">
       <div className="bg-white rounded-2xl shadow-lg flex flex-col md:flex-row gap-6 overflow-hidden max-w-4xl w-full">
         {/* Left Image Section */}
@@ -47,13 +55,13 @@ const ContactForm = () => {
           <img
             src={faq2}
             alt="Contact visual"
-            className="h-full "
+            className="contact-glow h-full "
           />
         </div>
 
         {/* Right Form Section */}
         <div className="md:w-1/2 p-6 md:p-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800">Contact Us</h2>
+          <h2 className="text-2xl font-bold mb-6 text-gray-800">Tell us what's on your mind</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -91,7 +99,7 @@ const ContactForm = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-gray-800"
               ></textarea>
             </div>
             <button
@@ -109,6 +117,7 @@ const ContactForm = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };
