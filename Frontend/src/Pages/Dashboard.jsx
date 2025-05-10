@@ -7,6 +7,9 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.
 import RealEstateAgentIcon from '@mui/icons-material/RealEstateAgent';
 import axios from "axios";
 
+import Box from '@mui/material/Box';
+import { BarChart } from '@mui/x-charts/BarChart';
+
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
 const Dashboard = () => {
@@ -14,6 +17,8 @@ const Dashboard = () => {
   const [accounts, setAccounts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [incomeList, setIncomeList] = useState([]);
+  const [expenseList, setExpenseList] = useState([]);
 
   useEffect(() => {
     const fetchAccounts = async () => {
@@ -24,12 +29,8 @@ const Dashboard = () => {
           return;
         }
 
-        const config = {
-          headers: { Authorization: `Bearer ${token}` }
-        };
-
+        const config = { headers: { Authorization: `Bearer ${token}` } };
         const response = await axios.get('http://localhost:7500/api/accounts', config);
-        console.log("Accounts fetched:", response.data); // Debug
         setAccounts(response.data);
         setLoading(false);
       } catch (err) {
@@ -43,7 +44,25 @@ const Dashboard = () => {
       }
     };
 
+    const fetchIncomeExpense = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const config = { headers: { Authorization: `Bearer ${token}` } };
+
+        const [incomeRes, expenseRes] = await Promise.all([
+          axios.get('http://localhost:7500/api/incomes', config),
+          axios.get('http://localhost:7500/api/expenses', config),
+        ]);
+
+        setIncomeList(incomeRes.data);
+        setExpenseList(expenseRes.data);
+      } catch (err) {
+        console.error("Error fetching income/expense:", err);
+      }
+    };
+
     fetchAccounts();
+    fetchIncomeExpense();
   }, [navigate]);
 
   const handleDeleteAccount = async (id) => {
@@ -54,10 +73,7 @@ const Dashboard = () => {
         return;
       }
 
-      const config = {
-        headers: { Authorization: `Bearer ${token}` }
-      };
-
+      const config = { headers: { Authorization: `Bearer ${token}` } };
       await axios.delete(`http://localhost:7500/api/accounts/${id}`, config);
       setAccounts(accounts.filter(account => account._id !== id));
     } catch (err) {
@@ -68,14 +84,11 @@ const Dashboard = () => {
 
   const handleAddAccount = () => navigate('/add-account');
 
-  const incomeData = [5, 6, 4.5, 5.5, 3, 6, 4.5, 6, 7.5, 3];
-  const expenseData = [4, 5, 3.5, 4.5, 2, 5, 3.5, 5, 6.5, 2];
-
   const chartData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
     datasets: [
-      { label: "Income", backgroundColor: "#4F46E5", data: incomeData },
-      { label: "Expenses", backgroundColor: "#6366F1", data: expenseData },
+      { label: "Income", backgroundColor: "#4F46E5", data: [5, 6, 4.5, 5.5, 3, 6, 4.5, 6, 7.5, 3] },
+      { label: "Expenses", backgroundColor: "#6366F1", data: [4, 5, 3.5, 4.5, 2, 5, 3.5, 5, 6.5, 2] },
     ],
   };
 
@@ -88,32 +101,37 @@ const Dashboard = () => {
     plugins: { legend: { display: false } },
   };
 
+  // Removed unused groupByMonth function
+
+  // Simple data for charts
+  const chartMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+  const incomeData = [5000, 6000, 4500, 5500, 3000, 6000];
+  const expenseData = [4000, 5000, 3500, 4500, 2000, 5000];
+
+  // Simplified LineChart rendering
+
   return (
     <div className="relative min-h-screen">
       <div className="flex h-screen w-screen bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
-        {/* Sidebar */}
         <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6 space-y-6">
           <div className="text-white text-2xl"><RealEstateAgentIcon /></div>
           <FaChartBar className="text-white text-2xl cursor-pointer" onClick={() => navigate('/income')} />
           <FaWallet className="text-white text-2xl cursor-pointer" onClick={() => navigate('/expense')} />
-          <FaUserFriends className="text-white text-2xl" onClick={() => navigate("/budget")} />
+          <FaUserFriends className="text-white text-2xl" onClick={() => navigate("/contact")} />
           <FiSettings className="text-white text-2xl mt-auto" />
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 ml-20 flex flex-col">
-          {/* Navbar */}
+          {/* Top Bar */}
           <div className="flex items-center justify-between p-4">
             <div className="flex items-center w-1/2">
               <input className="w-full p-2 rounded-l-md border border-gray-300" placeholder="Search Here" />
-              <button className="bg-blue-600 p-2 rounded-r-md text-white">
-                <FiSearch />
-              </button>
+              <button className="ml-3 !bg-blue-600 !p-3.5 !rounded-r-md text-white"><FiSearch /></button>
             </div>
             <div className="flex items-center space-x-4">
               <button
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 rounded-md shadow-md transition-all duration-300 flex items-center gap-2 font-medium group"
-                onClick={() => navigate('/add-budget')}
+                onClick={() => navigate('/budget')}
               >
                 <span className="bg-white text-blue-600 rounded-full p-1 group-hover:rotate-90 transition-transform duration-300 flex items-center justify-center">
                   <FiPlus size={12} />
@@ -122,28 +140,24 @@ const Dashboard = () => {
               </button>
               <FiSettings className="text-xl text-gray-600" />
               <FiBell className="text-xl text-gray-600" />
-              <div className="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-white">
-                <FiUser />
-              </div>
+              <div className="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-white"><FiUser /></div>
             </div>
           </div>
 
-          {/* Header */}
           <div className="px-6 py-4 flex items-center justify-between">
             <h1 className="text-2xl font-bold text-white">Dashboard</h1>
           </div>
           <p className="px-6 text-gray-500">Welcome to <b>BudgetBee</b> Finance Tracker</p>
 
-          {/* Accounts Section */}
+          {/* Accounts */}
           <div className="px-6 py-4">
-          <h2 className="!text-[30px] font-semibold !text-white mb-4">Your Accounts</h2>
+            <h2 className="!text-[30px] font-semibold !text-white mb-4">Your Accounts</h2>
             {loading ? (
               <div className="text-center py-4">Loading accounts...</div>
             ) : error ? (
               <div className="text-center py-4 text-red-500">{error}</div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Add New */}
                 <div
                   className="bg-gray-100 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors duration-300 border-2 border-dashed border-gray-300"
                   onClick={handleAddAccount}
@@ -151,8 +165,6 @@ const Dashboard = () => {
                   <div className="text-gray-400 text-3xl mb-2">+</div>
                   <p className="text-gray-500 font-medium">Add New Account</p>
                 </div>
-
-                {/* Account Cards */}
                 {accounts.map(account => (
                   <div key={account._id} className="bg-white rounded-lg shadow-md p-4">
                     <div className="flex justify-between items-start">
@@ -160,27 +172,20 @@ const Dashboard = () => {
                         <h3 className="font-semibold text-blue-900">{account.name}</h3>
                         <div className="flex justify-between items-center mt-4">
                           <p className="text-sm text-gray-500 font-medium">Total Amount</p>
-                          
                           <p className="text-xl font-bold text-black pl-4">
-                          ₹{account.balance ? account.balance.toFixed(2) : "0.00"}
+                            ₹{account.balance ? account.balance.toFixed(2) : "0.00"}
                           </p>
                         </div>
                       </div>
-                      <button
-                        className="text-red-500 hover:text-red-700 flex items-center"
-                        onClick={() => handleDeleteAccount(account._id)}
-                      >
+                      <button className="text-red-500 hover:text-red-700 flex items-center"
+                        onClick={() => handleDeleteAccount(account._id)}>
                         <FiTrash2 size={14} className="mr-1" />
                         <span className="text-xs">Delete</span>
                       </button>
                     </div>
                     <div className="flex justify-between mt-4 text-sm">
-                      <div className="flex items-center text-green-600">
-                        <span className="mr-1">↑</span><span>Income</span>
-                      </div>
-                      <div className="flex items-center text-red-600">
-                        <span className="mr-1">↓</span><span>Expenses</span>
-                      </div>
+                      <div className="flex items-center text-green-600"><span className="mr-1">↑</span>Income</div>
+                      <div className="flex items-center text-red-600"><span className="mr-1">↓</span>Expenses</div>
                     </div>
                   </div>
                 ))}
@@ -188,15 +193,27 @@ const Dashboard = () => {
             )}
           </div>
 
-          {/* Charts Section */}
+          {/* Charts */}
           <div className="grid grid-cols-2 gap-6 p-6">
             <div className="bg-white rounded-xl p-4 shadow">
               <h2 className="text-xl font-bold">Balance Trends</h2>
               <p className="text-gray-500">$221,478</p>
-              <div className="h-48 bg-gray-100 mt-4 rounded-md flex items-center justify-center">
-                Chart Here
-              </div>
+              {/* Replace LineChart with BarChart for stability */}
+              <Box sx={{ width: '100%', height: 300 }}>
+                <BarChart
+                  xAxis={[{ 
+                    data: chartMonths,
+                    scaleType: 'band',
+                    label: 'Month' 
+                  }]}
+                  series={[
+                    { data: incomeData, label: 'Income', color: '#22c55e' },
+                    { data: expenseData, label: 'Expenses', color: '#ef4444' }
+                  ]}
+                />
+              </Box>
             </div>
+
             <div className="bg-white rounded-xl p-4 shadow">
               <h2 className="text-xl font-bold">Monthly Expenses Breakdown</h2>
               <div className="mt-4 space-y-2">
@@ -207,7 +224,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Bar Chart Section */}
+          {/* Bar Chart */}
           <div className="p-6 bg-gray-50">
             <div className="bg-white rounded-xl shadow-md p-6">
               <h2 className="text-xl font-bold text-blue-900 mb-6">Monthly Income vs Expenses</h2>
@@ -215,7 +232,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Footer */}
           <div className="text-center text-gray-400 py-4">
             © {new Date().getFullYear()} <span className="font-bold text-blue-600">BudgetBee</span> | All Rights Reserved
           </div>
