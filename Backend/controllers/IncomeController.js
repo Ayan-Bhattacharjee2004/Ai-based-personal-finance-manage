@@ -36,15 +36,63 @@ const createIncome = async (req, res) => {
   }
 };
 
+// Backend/controllers/IncomeController.js - Updated getAllIncomes function
+
 const getAllIncomes = async (req, res) => {
   try {
-    const incomes = await Income.find({ userId: req.user }); // ✅ Fetch only logged-in user's income
+    const userId = req.user;
+    let query = { userId };
+    
+    // Check if month and year parameters are provided
+    if (req.query.month && req.query.year) {
+      const month = parseInt(req.query.month) - 1; // JavaScript months are 0-11
+      const year = parseInt(req.query.year);
+      
+      const startDate = new Date(year, month, 1);
+      const endDate = new Date(year, month + 1, 0); // Last day of the month
+      
+      // Add date range filter to the query
+      query.date = {
+        $gte: startDate,
+        $lte: endDate
+      };
+    }
+    
+    const incomes = await Income.find(query);
     res.status(200).json(incomes);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
+// Backend/controllers/ExpenseController.js - Updated getAllExpenses function
+
+const getAllExpenses = async (req, res) => {
+  try {
+    const userId = req.user;
+    let query = { userId };
+    
+    // Check if month and year parameters are provided
+    if (req.query.month && req.query.year) {
+      const month = parseInt(req.query.month) - 1; // JavaScript months are 0-11
+      const year = parseInt(req.query.year);
+      
+      const startDate = new Date(year, month, 1);
+      const endDate = new Date(year, month + 1, 0); // Last day of the month
+      
+      // Add date range filter to the query
+      query.date = {
+        $gte: startDate,
+        $lte: endDate
+      };
+    }
+    
+    const expenses = await Expense.find(query);
+    res.status(200).json(expenses);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 const deleteIncome = async (req, res) => {
   try {
     await Income.findByIdAndDelete(req.params.id);

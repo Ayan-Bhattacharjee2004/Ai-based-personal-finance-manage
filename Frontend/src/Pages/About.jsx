@@ -49,15 +49,21 @@ function About() {
         <div className="stepsContainer">
           <div className="step bg-gray-900">
             <h3>1. Connect Your Accounts</h3>
-            <p>Securely link your bank accounts, credit cards, and bills in just a few clicks.</p>
+            <p>Start by setting up your personalized budget accounts — like Food, Travel, Bills, or Savings. These categories help you
+              organize your spending and income in a way that makes sense for your lifestyle. Whether you're planning a trip or managing
+              groceries, creating clear accounts keeps your finances simple, structured, and easy to track.</p>
           </div>
           <div className="step bg-gray-900">
             <h3>2. Let AI Analyze</h3>
-            <p>Our AI instantly tracks your spending, income, and financial patterns.</p>
+            <p> Once you've added your income and expenses into your custom categories, our intelligent system steps in.
+              BudgetBee automatically analyzes your financial activity, identifies spending trends, and highlights where
+              you're saving — or overspending. It's like having a smart assistant that keeps an eye on your money 24/7.</p>
           </div>
           <div className="step bg-gray-900">
             <h3>3. Get Smart Insights</h3>
-            <p>Receive real-time suggestions, saving goals, and budget tips tailored to you.</p>
+            <p>RTurn your data into action. BudgetBee gives you personalized tips, alerts, and savings goals based on your
+              spending habits. Whether you're trying to cut back on dining out or save more for travel, you'll get
+              real-time, AI-powered advice to stay on track and reach your financial goals faster.</p>
           </div>
         </div>
       </section>
@@ -69,28 +75,28 @@ function About() {
           <div className="teamMember">
             <img src={AyanImage} alt="Team Member 1" className="teamImage" />
             <h3>Ayan Bhattacharjee</h3>
-            <p>CEO & Founder</p>
-            <p>Ayan leads our mission to simplify personal finance using AI.</p>
+            <p>Project Leader, Coding</p>
+            <p>Ayan drives our vision forward, blending technical expertise with a passion for making personal finance smarter through AI-powered solutions.</p>
           </div>
           <div className="teamMember">
             <img src="team-member-2.jpg" alt="Team Member 2" className="teamImage" />
             <h3>Robiul Sk</h3>
-            <p>CTO & Co-Founder</p>
-            <p>Robiul is the brains behind our innovative AI technology.</p>
+            <p>Authentication & Presentation Design</p>
+            <p>Robiul built our secure login system and designs presentations that make our vision clear and compelling.</p>
           </div>
           <div className="teamMember">
             <img src={KasifImage} alt="Team Member 3" className="teamImage" />
             <h3>Kasif Sk</h3>
-            <p>Head of Product</p>
-            <p>Kasif ensures our product delivers value to our users every day.</p>
+            <p>Quality Assurance & Testing</p>
+            <p>Kasif rigorously tests every feature to ensure a seamless and reliable experience for our users.</p>
           </div>
           <div className="teamMember">
             <img src={YounusImage} alt="Team Member 4" className="teamImage " />
             <h3>Younus Hossain</h3>
-            <p>Marketing Director</p>
-            <p>Younus leads our outreach and communication strategies to grow our user base.</p>
+            <p>Development & Documentation</p>
+            <p>Younus combines technical expertise with clear documentation to ensure our platform is both powerful and easy to understand.</p>
           </div>
-        </div> 
+        </div>
       </section>
 
     </div>

@@ -3,15 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import { FiSearch, FiBell, FiSettings, FiUser, FiPlus, FiTrash2 } from "react-icons/fi";
 import { FaChartBar, FaWallet, FaUserFriends } from "react-icons/fa";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
+import { 
+  Chart as ChartJS, 
+  BarElement, 
+  CategoryScale, 
+  LinearScale, 
+  Title,
+  Tooltip,
+  Legend 
+} from "chart.js";
 import RealEstateAgentIcon from '@mui/icons-material/RealEstateAgent';
 import { IoWallet } from "react-icons/io5";
 import axios from "axios";
-
 import Box from '@mui/material/Box';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-ChartJS.register(BarElement, CategoryScale, LinearScale);
+// Register ALL necessary Chart.js components
+ChartJS.register(
+  BarElement, 
+  CategoryScale, 
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -50,9 +65,13 @@ const Dashboard = () => {
         const token = localStorage.getItem('token');
         const config = { headers: { Authorization: `Bearer ${token}` } };
 
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const year = now.getFullYear();
+
         const [incomeRes, expenseRes] = await Promise.all([
-          axios.get('http://localhost:7500/api/incomes', config),
-          axios.get('http://localhost:7500/api/expenses', config),
+          axios.get(`http://localhost:7500/api/incomes?month=${month}&year=${year}`, config),
+          axios.get(`http://localhost:7500/api/expenses?month=${month}&year=${year}`, config),
         ]);
 
         setIncomeList(incomeRes.data);
@@ -64,7 +83,7 @@ const Dashboard = () => {
 
     fetchAccounts();
     fetchIncomeExpense();
-  }, [navigate]);
+  }, [navigate]); 
 
   const handleDeleteAccount = async (id) => {
     try {
@@ -85,29 +104,101 @@ const Dashboard = () => {
 
   const handleAddAccount = () => navigate('/add-account');
 
+  // monthly chart data
+  const now = new Date();
+  const currentMonthName = now.toLocaleString('default', { month: 'short' });
+  const totalIncome = incomeList.reduce((sum, item) => sum + item.amount, 0);
+  const totalExpense = expenseList.reduce((sum, item) => sum + item.amount, 0);
+
   const chartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+    labels: [currentMonthName],
     datasets: [
-      { label: "Income", backgroundColor: "#4F46E5", data: [5, 6, 4.5, 5.5, 3, 6, 4.5, 6, 7.5, 3] },
-      { label: "Expenses", backgroundColor: "#6366F1", data: [4, 5, 3.5, 4.5, 2, 5, 3.5, 5, 6.5, 2] },
+      { 
+        label: "Income", 
+        backgroundColor: "#4ade80", // Green for income
+        data: [totalIncome],
+        borderWidth: 1,
+        borderColor: "#2f9e44"
+      },
+      { 
+        label: "Expenses", 
+        backgroundColor: "#f87171", // Red for expenses
+        data: [totalExpense],
+        borderWidth: 1,
+        borderColor: "#e11d48"
+      },
     ],
   };
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
-      y: { beginAtZero: true, ticks: { color: "#cbd5e1" } },
-      x: { ticks: { color: "#cbd5e1" } },
+      y: { 
+        beginAtZero: true, 
+        ticks: { 
+          color: "#334155", // Dark text for better visibility
+          font: {
+            weight: 'bold',
+            size: 12
+          }
+        },
+        grid: {
+          color: "rgba(203, 213, 225, 0.4)" // Lighter grid lines
+        },
+        title: {
+          display: true,
+          text: 'Amount (₹)',
+          color: "#334155",
+          font: {
+            size: 14,
+            weight: 'bold'
+          }
+        }
+      },
+      x: { 
+        ticks: { 
+          color: "#334155", // Dark text for better visibility
+          font: {
+            weight: 'bold',
+            size: 14
+          }
+        },
+        grid: {
+          display: false // Remove x-axis grid lines for cleaner look
+        }
+      },
     },
-    plugins: { legend: { display: false } },
+    plugins: { 
+      legend: { 
+        display: true,
+        position: 'top',
+        labels: {
+          color: "#334155",
+          font: {
+            size: 14,
+            weight: 'bold'
+          },
+          padding: 20,
+          usePointStyle: true,
+          pointStyle: 'circle'
+        }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(17, 24, 39, 0.8)',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        padding: 12,
+        displayColors: true,
+        callbacks: {
+          label: function(context) {
+            return `${context.dataset.label}: ₹${context.raw.toLocaleString()}`;
+          }
+        }
+      }
+    },
   };
 
-  // Simple data for charts
-  const chartMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-  const incomeData = [5000, 6000, 4500, 5500, 3000, 6000];
-  const expenseData = [4000, 5000, 3500, 4500, 2000, 5000];
-
-  // Sidebar menu items
   const sidebarItems = [
     { icon: <FaChartBar className="text-2xl" />, text: "Dashboard", route: "/" },
     { icon: <FaWallet className="text-2xl" />, text: "Income", route: "/income" },
@@ -115,10 +206,8 @@ const Dashboard = () => {
     { icon: <FaUserFriends className="text-2xl" />, text: "Contacts", route: "/contact" },
   ];
 
-  // Custom sidebar link component with popup text
   const SidebarLink = ({ icon, text, onClick }) => {
     const [showTooltip, setShowTooltip] = useState(false);
-    
     return (
       <div 
         className="relative py-4 w-full flex justify-center"
@@ -129,7 +218,6 @@ const Dashboard = () => {
         <div className="text-white cursor-pointer hover:scale-110 transition-transform duration-200">
           {icon}
         </div>
-        
         {showTooltip && (
           <div className="absolute left-20 bg-blue-800 text-white px-3 py-2 rounded-md whitespace-nowrap shadow-lg z-50">
             <div className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-2 h-2 bg-blue-800"></div>
@@ -143,7 +231,7 @@ const Dashboard = () => {
   return (
     <div className="relative min-h-screen">
       <div className="flex h-screen w-screen bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
-        {/* Sidebar with popup tooltips */}
+        {/* Sidebar */}
         <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6">
           <div className="text-white text-2xl mb-8 relative group cursor-pointer">
             <RealEstateAgentIcon />
@@ -152,7 +240,6 @@ const Dashboard = () => {
               BudgetBee
             </div>
           </div>
-          
           {sidebarItems.map((item, index) => (
             <SidebarLink 
               key={index}
@@ -161,7 +248,6 @@ const Dashboard = () => {
               onClick={() => navigate(item.route)}
             />
           ))}
-          
           <div className="mt-auto">
             <SidebarLink 
               icon={<FiSettings className="text-white text-2xl" />} 
@@ -203,7 +289,7 @@ const Dashboard = () => {
           <div className="px-6 py-4">
             <h2 className="!text-[30px] font-semibold !text-white mb-4">Your Accounts</h2>
             {loading ? (
-              <div className="text-center py-4">Loading accounts...</div>
+              <div className="text-center py-4 text-white">Loading accounts...</div>
             ) : error ? (
               <div className="text-center py-4 text-red-500">{error}</div>
             ) : (
@@ -244,45 +330,16 @@ const Dashboard = () => {
           </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-2 gap-6 p-6">
-            <div className="bg-white rounded-xl p-4 shadow">
-              <h2 className="text-xl font-bold">Balance Trends</h2>
-              <p className="text-gray-500">$221,478</p>
-              {/* Replace LineChart with BarChart for stability */}
-              <Box sx={{ width: '100%', height: 300 }}>
-                <BarChart
-                  xAxis={[{ 
-                    data: chartMonths,
-                    scaleType: 'band',
-                    label: 'Month' 
-                  }]}
-                  series={[
-                    { data: incomeData, label: 'Income', color: '#22c55e' },
-                    { data: expenseData, label: 'Expenses', color: '#ef4444' }
-                  ]}
-                />
-              </Box>
-            </div>
-
-            <div className="bg-white rounded-xl p-4 shadow">
-              <h2 className="text-xl font-bold">Monthly Expenses Breakdown</h2>
-              <div className="mt-4 space-y-2">
-                <ExpenseItem color="orange" label="Food" amount="$1,200" percent="38%" />
-                <ExpenseItem color="yellow" label="Transport" amount="$700" percent="22%" />
-                <ExpenseItem color="green" label="Healthcare" amount="$400" percent="12%" />
+          <div className="p-6">
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <h2 className="text-xl font-bold text-blue-900 mb-6">Monthly Income vs Expenses</h2>
+              <div className="h-64">
+                <Bar data={chartData} options={chartOptions} />
               </div>
             </div>
           </div>
 
-          {/* Bar Chart */}
-          <div className="p-6 bg-gray-50">
-            <div className="bg-white rounded-xl shadow-md p-6">
-              <h2 className="text-xl font-bold text-blue-900 mb-6">Monthly Income vs Expenses</h2>
-              <Bar data={chartData} options={chartOptions} />
-            </div>
-          </div>
-
-          <div className="text-center text-gray-400 py-4">
+          <div className="text-center text-gray-400 py-4 mt-auto">
             © {new Date().getFullYear()} <span className="font-bold text-blue-600">BudgetBee</span> | All Rights Reserved
           </div>
         </div>
