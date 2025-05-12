@@ -230,7 +230,7 @@ const Dashboard = () => {
 
   return (
     <div className="relative min-h-screen">
-      <div className="flex h-screen w-screen bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
+      <div className="flex h-100% w-100% bg-[linear-gradient(90deg,_rgba(2,0,36,1)_0%,_rgba(9,9,121,1)_47%,_rgba(0,0,0,1)_100%)]">
         {/* Sidebar */}
         <div className="fixed top-0 left-0 min-h-screen w-20 bg-blue-700 flex flex-col items-center py-6">
           <div className="text-white text-2xl mb-8 relative group cursor-pointer">
